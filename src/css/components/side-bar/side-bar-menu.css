@@ -1,0 +1,40 @@
+.side-menu {
+    border-top: var(--side-bar-border);
+    border-bottom: var(--side-bar-border);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.side-menu__item {
+    padding: 1em;
+    cursor: pointer;
+}
+
+.side-menu__item:hover {
+    background-color: #394250;
+    border-left: 3px solid var(--primary-color);
+    padding-left: calc(1em - 3px);
+}
+
+.side-menu__item--active {
+    background-color: #394250;
+    border-left: 3px #00AE69 solid;
+    padding-left: calc(1em - 3px);
+}
+
+.side-menu__item--button {
+    padding: .5em;
+}
+
+.side-menu__item--no-action {
+    cursor: default;
+}
+
+.side-menu__item--no-action:hover {
+    background-color: transparent;
+}
+
+.side-menu__item--center {
+    text-align: center;
+}
