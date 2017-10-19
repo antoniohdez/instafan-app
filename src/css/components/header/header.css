@@ -1,5 +1,23 @@
 .header {
+    align-items: center;
     background-color: white;
     box-shadow: var(--default-shadow);
+    display: flex;
     grid-area: header;
+    justify-content: center;
+}
+
+.header__left-menu {
+    position: absolute;
+    left: 0;
+}
+
+.header__title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.header__right-menu {
+    position: absolute;
+    right: 0;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/header/Header';
 import SideBar from './components/side-bar/SideBar';
+import MainContainer from './components/MainContainer';
 
 class App extends Component {
     render() {
@@ -8,6 +9,7 @@ class App extends Component {
             <div className="layout">
                 <Header />
                 <SideBar />
+                <MainContainer />
             </div>
         );
     }
