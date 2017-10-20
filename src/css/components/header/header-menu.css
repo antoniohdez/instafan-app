@@ -34,12 +34,16 @@
 }
 
 .header-menu__item--thumbnail > img {   
+    background-color: #F0F0F0;
     border: 1px solid #eee;
     border-radius: 50%;
     height: var(--thumbnail-size);
+    max-height: var(--thumbnail-size);
+    max-width: var(--thumbnail-size);
     object-fit: cover;
     vertical-align: middle;
     width: var(--thumbnail-size);
+    overflow: hidden;
 }
 
 /*
@@ -50,6 +54,7 @@
     background-color: white;
     border-top: 1px solid var(--default-color);
     box-shadow: var(--default-shadow);
+    color: var(--text-default-color);
     display: none;
     line-height: 30px;
     list-style-type: none;

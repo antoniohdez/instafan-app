@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import CampaignList from './campaigns/CampaignList';
 
 class Main extends Component {
     render() {
         return (
             <div className="container">
-                Main container
+                <CampaignList />
             </div>
         );
     }

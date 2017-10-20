@@ -9,11 +9,11 @@ class SideBar extends Component {
                 </header>
                 <nav className="side-bar__menu">
 	                <ul className="side-menu">
-                        <li className="side-menu__item side-menu__item--active">
+                        <li className="side-menu__item">
                             <i className="fa fa-fw fa-home"></i>
                             <span> Inicio</span>
                         </li>
-                        <li className="side-menu__item">
+                        <li className="side-menu__item side-menu__item--active">
                             <i className="fa fa-fw fa-flag"></i>
                             <span> Campañas</span>
                         </li>
