@@ -4,6 +4,7 @@
 @import url('components/campaigns/index.css');
 @import url('util/variables.css');
 @import url('util/button/button.css');
+@import url('util/status/status.css');
 
 
 html, body {

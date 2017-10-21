@@ -1,0 +1,23 @@
+.campaign-status {
+	cursor: pointer;
+}
+
+.campaign-status__icon{
+	
+}
+
+.campaign-status__icon--ok{
+	color: var(--status-color-ok);
+}
+
+.campaign-status__icon--warning{
+	color: var(--status-color-warning);	
+}
+
+.campaign-status__icon--expired{
+	color: var(--status-color-expired);	
+}
+
+.campaign-status__text {
+	margin-left: 5px;
+}
