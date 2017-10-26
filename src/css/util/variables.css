@@ -5,7 +5,7 @@
     --side-bar-width: 230px;
 
     /* Font */
-    --font-color: #37404d;
+    --font-color: #37404D;
     --font-family: Roboto, sans-serif;
     --font-size: 16px;
 
@@ -15,9 +15,9 @@
       --small-shadow: 2px 2px 2px rgba(0,0,0,0.16);
 
     /* Color Palette */
-              --default-color: #e4e7ea;
-       --raised-default-color: #eceff3;
-    --decreased-default-color: #d4d7da;
+              --default-color: #E4E7EA;
+       --raised-default-color: #ECEFF3;
+    --decreased-default-color: #D4D7DA;
          --text-default-color: var(--font-color);
 
               --primary-color: #00AE69;

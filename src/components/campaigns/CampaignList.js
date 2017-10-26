@@ -4,11 +4,11 @@ class Header extends Component {
     render() {
         return (
             <div className="campaign-list">
-                <div className="campaign-item campaign-item--add">
+                <div className="panel campaign-item campaign-item--add">
                     <i className="fa fa-plus-circle fa-5x"></i>
                     <div>Crear Campaña</div>
                 </div>
-                <div className="campaign-item">
+                <div className="panel campaign-item">
                     <div className="campaign-item__status-bar">
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">
@@ -43,7 +43,7 @@ class Header extends Component {
                         <div className="campaign-item__details-hashtag">#rio2018</div>
                     </div>
                 </div>
-                <div className="campaign-item">
+                <div className="panel campaign-item">
                     <div className="campaign-item__status-bar">
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">
@@ -78,7 +78,7 @@ class Header extends Component {
                         <div className="campaign-item__details-hashtag">#aguas</div>
                     </div>
                 </div>
-                <div className="campaign-item">
+                <div className="panel campaign-item">
                     <div className="campaign-item__status-bar">
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">

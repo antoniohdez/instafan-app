@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class SideBar extends Component {
     render() {
@@ -10,16 +11,22 @@ class SideBar extends Component {
                 <nav className="side-bar__menu">
 	                <ul className="side-menu">
                         <li className="side-menu__item">
-                            <i className="fa fa-fw fa-home"></i>
-                            <span> Inicio</span>
+                            <Link to="/">
+                                <i className="fa fa-fw fa-home"></i>
+                                <span> Inicio</span>
+                            </Link>
                         </li>
                         <li className="side-menu__item side-menu__item--active">
-                            <i className="fa fa-fw fa-flag"></i>
-                            <span> Campañas</span>
+                            <Link to="/campaigns">
+                                <i className="fa fa-fw fa-flag"></i>
+                                <span> Campañas</span>
+                            </Link>
                         </li>
                         <li className="side-menu__item">
-                            <i className="fa fa-fw fa-line-chart"></i>
-                            <span> Estadísticas</span>
+                            <Link to="/#">
+                                <i className="fa fa-fw fa-line-chart"></i>
+                                <span> Estadísticas</span>
+                            </Link>
                         </li>
                     </ul>
                     <div className="side-bar__call-to-action">

@@ -7,19 +7,35 @@
 }
 
 .side-menu__item {
-    padding: 1em;
     cursor: pointer;
 }
 
 .side-menu__item:hover {
     background-color: #394250;
     border-left: 3px solid var(--primary-color);
-    padding-left: calc(1em - 3px);
+    
 }
 
 .side-menu__item--active {
     background-color: #394250;
     border-left: 3px #00AE69 solid;
+    
+}
+
+.side-menu__item > a{
+    box-sizing: border-box;
+    color: white;
+    display: inline-block;
+    padding: 1em;
+    text-decoration: none;
+    width: 100%;
+}
+
+.side-menu__item > a:hover {
+    padding-left: calc(1em - 3px);
+}
+
+.side-menu__item--active > a {
     padding-left: calc(1em - 3px);
 }
 

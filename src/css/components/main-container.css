@@ -1,5 +1,4 @@
 .container {
-    display: flex;
     grid-area: main-container;
     padding: 1em;
 }

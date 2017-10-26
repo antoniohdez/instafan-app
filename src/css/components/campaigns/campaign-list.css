@@ -21,17 +21,12 @@
     width: 100%;
 }
 
-.campaign-list__item {
-    background-color: gray;
-}
-
 /*
     Campaign Items
 */
 
 .campaign-item {
-    background-color: white;
-    box-shadow: var(--small-shadow);
+    
 }
 
 .campaign-item__status-bar {
@@ -110,9 +105,10 @@
 .campaign-item--add {
     align-items: center;
     cursor: pointer;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     
 }
 

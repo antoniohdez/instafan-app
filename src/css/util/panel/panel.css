@@ -1,0 +1,38 @@
+.panel {
+    background-color: white;
+    box-shadow: var(--small-shadow);
+    display: inline-block;
+
+    --panel-border: 1px #f3f3f3 solid;
+}
+
+.panel--full-width {
+    display: block;
+}
+
+.panel__header {
+    border-bottom: var(--panel-border);
+    font-size: 22px;
+    padding: .5em;
+}
+
+.panel__content {
+    box-sizing: content-box;
+    padding: .5em;
+}
+
+.panel__content--large-padding {
+    padding: 1em;
+}
+
+.panel__footer {
+    border-top: var(--panel-border);
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+}
+
+.panel__footer-left-buttons > button,
+.panel__footer-right-buttons > button{
+    margin: 0 .25em;
+}
