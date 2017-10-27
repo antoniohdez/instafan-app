@@ -7,6 +7,10 @@
     --label-color: #7A8597;
 }
 
+.form--login {
+    width: 350px;
+}
+
 .form__row {
     display: flex;
 }
@@ -60,9 +64,11 @@
     font-size: 16px;
     height: var(--input-height);
     padding: 0 .5em;
+    width: 100%;
 }
 
-.form__element > input {
+.form__element > input,
+.form__element > button {
     border-radius: var(--input-border-radius);
     width: 100%;
 }
@@ -126,7 +132,7 @@
 
 .form__drag-n-drop-element--full-width > .form__drag-n-drop-input > label {
     box-sizing: border-box;
-    height: 150px;
+    height: 117px;
     width: 100%;
 }
 

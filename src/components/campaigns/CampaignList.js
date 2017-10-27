@@ -36,7 +36,7 @@ class Header extends Component {
                         </span>
                     </div>
                     <div className="campaign-item__image">
-                        <img src="test.png" alt="campaign image" />
+                        <img src="../test.png" alt="campaign image" />
                     </div>
                     <div className="campaign-item__details">
                         <div className="campaign-item__details-title">Campaña Kia Rio 2018</div>
@@ -71,7 +71,7 @@ class Header extends Component {
                         </span>
                     </div>
                     <div className="campaign-item__image">
-                        <img src="test2.png" alt="campaign image" />
+                        <img src="../test2.png" alt="campaign image" />
                     </div>
                     <div className="campaign-item__details">
                         <div className="campaign-item__details-title">Reporte Ciudadano</div>
@@ -106,7 +106,7 @@ class Header extends Component {
                         </span>
                     </div>
                     <div className="campaign-item__image">
-                        <img src="oracle.png" alt="campaign image" />
+                        <img src="../oracle.png" alt="campaign image" />
                     </div>
                     <div className="campaign-item__details">
                         <div className="campaign-item__details-title">Oracle MDC</div>

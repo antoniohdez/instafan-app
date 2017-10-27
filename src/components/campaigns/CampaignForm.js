@@ -74,6 +74,39 @@ class CampaignForm extends Component {
                                 </div>
                             </div>
                         </div>
+                        <div className="form__column">
+                            <div className="form__element form__drag-n-drop-element">
+                                <div className="form__label">
+                                    &nbsp;
+                                </div>
+                                <div className="form__drag-n-drop-input">
+                                    <input id="target" type="file" />
+                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form__column">
+                            <div className="form__element form__drag-n-drop-element">
+                                <div className="form__label">
+                                    &nbsp;
+                                </div>
+                                <div className="form__drag-n-drop-input">
+                                    <input id="target" type="file" />
+                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form__column">
+                            <div className="form__element form__drag-n-drop-element">
+                                <div className="form__label">
+                                    &nbsp;
+                                </div>
+                                <div className="form__drag-n-drop-input">
+                                    <input id="target" type="file" />
+                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="form__row">
                         <div className="form__column">
@@ -88,10 +121,32 @@ class CampaignForm extends Component {
                             </div>
                         </div>
                         <div className="form__column--divider"></div>
-                        <div className="form__column form__column--1">
+                        <div className="form__column">
                             <div className="form__element form__drag-n-drop-element">
                                 <div className="form__label">
                                     Marcos
+                                </div>
+                                <div className="form__drag-n-drop-input">
+                                    <input id="target" type="file" />
+                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form__column">
+                            <div className="form__element form__drag-n-drop-element">
+                                <div className="form__label">
+                                    &nbsp;
+                                </div>
+                                <div className="form__drag-n-drop-input">
+                                    <input id="target" type="file" />
+                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form__column">
+                            <div className="form__element form__drag-n-drop-element">
+                                <div className="form__label">
+                                    &nbsp;
                                 </div>
                                 <div className="form__drag-n-drop-input">
                                     <input id="target" type="file" />

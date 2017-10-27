@@ -2,6 +2,7 @@
 @import url('components/header/index.css');
 @import url('components/side-bar/index.css');
 @import url('components/campaigns/index.css');
+@import url('components/sessions/index.css');
 @import url('util/variables.css');
 @import url('util/util.css');
 @import url('util/button/button.css');
@@ -28,4 +29,21 @@ html, body {
     grid-template-columns: var(--side-bar-width) 1fr;
     height: 100vh;
     width: 100%;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.text-align--center {
+    text-align: center;
+}
+
+.text-align--right {
+    text-align: right;
 }
