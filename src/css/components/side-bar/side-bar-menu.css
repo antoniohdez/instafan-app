@@ -35,6 +35,16 @@
     padding-left: calc(1em - 3px);
 }
 
+@media (max-width: 1024px) {
+    .side-menu__item-label {
+        display: none;
+    }
+
+    .side-menu__item > a{
+        width: auto !important;
+    }
+}
+
 .side-menu__item--active > a {
     padding-left: calc(1em - 3px);
 }

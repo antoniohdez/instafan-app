@@ -6,11 +6,23 @@
     grid-area: header;
     justify-content: center;
     position: relative;
+
+    --logo-width: 210px;
+}
+
+.header__logo {
+    background-image: url('../../../img/logo-dark.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: var(--header-height);
+    position: absolute;
+    left: 0;
+    width: var(--logo-width);
 }
 
 .header__left-menu {
     position: absolute;
-    left: 0;
+    left: var(--logo-width);
 }
 
 .header__title {

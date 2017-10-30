@@ -23,12 +23,27 @@ html, body {
 
 .layout {   
     display: grid;
-    grid-template-areas: "side-bar header"
+    grid-template-areas: "header header"
                          "side-bar main-container";
     grid-template-rows:    var(--header-height)  1fr;
     grid-template-columns: var(--side-bar-width) 1fr;
     height: 100vh;
     width: 100%;
+}
+
+/* 
+  Tablets, Ipads (portrait)
+*/
+@media (max-width: 1024px) {
+    .layout {   
+        display: grid;
+        grid-template-areas: "header header"
+                             "side-bar main-container";
+        grid-template-rows:    var(--header-height)  1fr;
+        grid-template-columns: 55px 1fr !important;
+        height: 100vh;
+        width: 100%;
+    }
 }
 
 a {

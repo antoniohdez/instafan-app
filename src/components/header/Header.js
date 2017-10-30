@@ -4,8 +4,11 @@ class Header extends Component {
     render() {
         return (
             <section className="header">
+                <div className="header__logo">
+                    
+                </div>
                 <nav className="header__left-menu"></nav>
-                <div className="header__title">Inicio</div>
+                <div className="header__title"></div>
                 <nav className="header__right-menu">
                     <ul className="header-menu">
                         <li className="header-menu__item header-menu__item--thumbnail">
