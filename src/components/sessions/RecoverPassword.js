@@ -26,6 +26,9 @@ class RecoverPassword extends Component {
 	            		</form>
 	            	</div>	
             	</div>
+            	<div className="login__copyright-message">
+                    © Copyright 2017 - ILLUTIO, Realidad Aumentada y Geolocalización S de RL de CV
+                </div>
             </div>
         );
     }

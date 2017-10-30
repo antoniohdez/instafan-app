@@ -15,7 +15,7 @@
 }
 
 .campaign-status__icon--expired{
-	color: var(--status-color-expired);	
+	color: var(--status-color-danger);	
 }
 
 .campaign-status__text {

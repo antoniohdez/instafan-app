@@ -5,6 +5,8 @@
     --input-border-color: #DDE2EC;
     --input-border-radius: 3px;
     --label-color: #7A8597;
+    --label-margin-bottom: 5px;
+    --line-height: 1.4rem;
 }
 
 .form--login {
@@ -13,6 +15,7 @@
 
 .form__row {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .form__column {
@@ -46,11 +49,12 @@
 .form__element > .form__label {
     color: var(--label-color);
     font-size: 14px;
-    margin-bottom: 5px;
+    line-height: var(--line-height);
+    margin-bottom: var(--label-margin-bottom);
 }
 
 .form__label > .fa-asterisk {
-    color: var(--status-color-expired);
+    color: var(--status-color-danger);
     opacity: .8
 }
 
@@ -110,7 +114,8 @@
     margin: 0 .5em .25em 0;
 }
 
-.form__drag-n-drop-element > .form__drag-n-drop-input > label {
+.form__drag-n-drop-element > .form__drag-n-drop-input > label,
+.form__drag-n-drop-input--placeholder {
     align-items: center;
     background-color: var(--input-background-color);
     border-color: var(--input-border-color);
@@ -126,13 +131,21 @@
     text-align: center;
 }
 
-.form__drag-n-drop-element--full-width > .form__drag-n-drop-input {
+.form__drag-n-drop-input--placeholder {
+    background-color: var(--input-background-color);
+    border-color: var(--input-border-color);
+    cursor: default;
+    filter: brightness(106%);
+    margin-top: calc( var(--line-height) + var(--label-margin-bottom) );
+}
+
+.form__drag-n-drop-element--target > .form__drag-n-drop-input {
     width: 100%;
 }
 
-.form__drag-n-drop-element--full-width > .form__drag-n-drop-input > label {
+.form__drag-n-drop-element--target > .form__drag-n-drop-input > label {
     box-sizing: border-box;
-    height: 117px;
+    height: 200px;
     width: 100%;
 }
 

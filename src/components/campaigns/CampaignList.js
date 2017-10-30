@@ -16,23 +16,13 @@ class Header extends Component {
                                 <span className="campaign-status__text">Activo</span>
                             </span>
                         </span>
-                        <span className="campaign-item__status-bar-item campaign-header-menu">
-                            <i className="fa fa-fw fa-ellipsis-h"></i>
-                            <ul className="sub-menu sub-menu--left-of-parent">
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-info"></i>
-                                    <span> Ver detalle</span>
-                                </li>
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-pencil"></i>
-                                    <span> Editar</span>
-                                </li>
-                                <div className="sub-menu__divider"></div>
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-times"></i>
-                                    <span> Eliminar</span>
-                                </li>
-                            </ul>
+                        <span className="campaign-item__status-bar-item">
+                            <span className="campaign-item__status-bar-button">
+                                <i className="fa fa-fw fa-pencil"></i>    
+                            </span>
+                            <span className="campaign-item__status-bar-button campaign-item__status-bar-button--danger">
+                                <i className="fa fa-fw fa-trash-o"></i>
+                            </span>
                         </span>
                     </div>
                     <div className="campaign-item__image">
@@ -48,7 +38,7 @@ class Header extends Component {
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">
                                 <span className="fa fa-fw fa-warning campaign-status__icon campaign-status__icon--warning"></span>
-                                <span className="campaign-status__text">Por expirar</span>
+                                <span className="campaign-status__text">Expira en 10 días</span>
                             </span>
                         </span>
                         <span className="campaign-item__status-bar-item campaign-header-menu">

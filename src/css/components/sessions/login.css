@@ -14,5 +14,13 @@
 }
 
 .login__register-message {
+	color: var(--text-default-color);
 	margin-top: 1.5em;
+}
+
+.login__copyright-message {
+	bottom: 1em;
+	color: var(--text-default-color);
+	font-size: 10px;
+	position: absolute;
 }

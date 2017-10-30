@@ -32,5 +32,5 @@
 
          --status-color-ok: #00AE69;
     --status-color-warning: #F5A330;
-    --status-color-expired: #E03510;
+     --status-color-danger: #E03510;
 }

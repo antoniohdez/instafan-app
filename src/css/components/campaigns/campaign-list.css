@@ -1,21 +1,9 @@
 .campaign-list {
     --columns: 4;
     --spacing: 1rem;
-    --column-width: 
-        calc(
-            /* Calculate base column's width */
-            ( 100% / var(--columns) )
-            - 
-            (
-                /* Adjust width based on spacing */
-                var(--spacing) 
-                - 
-                ( var(--spacing) / var(--columns) )
-            ) 
-        );
 
     display: grid;
-    grid-template-columns: repeat( var(--columns), var(--column-width) );
+    grid-template-columns: repeat( auto-fit, minmax(225px, 1fr) );
     grid-auto-rows: max-content;
     grid-gap: var(--spacing);
     width: 100%;
@@ -38,6 +26,19 @@
 .campaign-item__status-bar-item {
     line-height: 2rem;
     padding: 0 .5rem;
+}
+
+.campaign-item__status-bar-button {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.campaign-item__status-bar-button:last-of-type {
+    margin-right: 0px;
+}
+
+.campaign-item__status-bar-button--danger {
+    
 }
 
 /*

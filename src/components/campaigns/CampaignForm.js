@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CampaignForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { step: 2 };
+        this.state = { step: 1 };
 
         this.nextStep = this.nextStep.bind(this);
         this.backStep = this.backStep.bind(this);
@@ -17,6 +17,37 @@ class CampaignForm extends Component {
         this.setState({ step: this.state.step - 1 });
     }
 
+    getButtonsMarkup() {
+        return (
+            <div>
+                <span className="panel__footer-left-buttons">
+                    <button className="button">
+                        Cancelar
+                    </button>
+                </span>
+                <span className="panel__footer-right-buttons">
+                    <button className="button">
+                        Guardar Borrador
+                    </button>
+                    {
+                        this.state.step !== 1 ? (
+                            <button className="button" onClick={this.backStep}>
+                                Anterior
+                            </button>
+                        ) : ( null )
+                    }
+                    {
+                        this.state.step !== 2 ? (
+                            <button className="button button--primary" onClick={this.nextStep}>Siguiente</button>
+                        ) : (
+                            <button className="button button--primary">Publicar</button>
+                        )
+                    }
+                </span>
+            </div>
+        );
+    }
+
     getStepMarkup() {
         let element = null;
 
@@ -24,7 +55,7 @@ class CampaignForm extends Component {
             element = (
                 <div className="form__row">
                     <div className="form__column form__column--1">
-                        <div className="form__element form__drag-n-drop-element form__drag-n-drop-element--full-width">
+                        <div className="form__element form__drag-n-drop-element form__drag-n-drop-element--target">
                             <div className="form__label">
                                 Target 
                                 <i className="fa fa-asterisk"></i>
@@ -76,34 +107,7 @@ class CampaignForm extends Component {
                         </div>
                         <div className="form__column">
                             <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    &nbsp;
-                                </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    &nbsp;
-                                </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    &nbsp;
-                                </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                <div className="form__drag-n-drop-input form__drag-n-drop-input--placeholder">
                                 </div>
                             </div>
                         </div>
@@ -113,40 +117,6 @@ class CampaignForm extends Component {
                             <div className="form__element form__drag-n-drop-element">
                                 <div className="form__label">
                                     Marca de Agua
-                                </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form__column--divider"></div>
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    Marcos
-                                </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    &nbsp;
-                                </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    &nbsp;
                                 </div>
                                 <div className="form__drag-n-drop-input">
                                     <input id="target" type="file" />
@@ -165,6 +135,7 @@ class CampaignForm extends Component {
 
     render() {
         let stepMarkup = this.getStepMarkup();
+        let buttons = this.getButtonsMarkup();
         return (
             <div className="panel panel--full-width">
                 <div className="panel__header">Crear Campaña</div>
@@ -176,28 +147,7 @@ class CampaignForm extends Component {
                 </div>
 
                 <div className="panel__footer">
-                    <span className="panel__footer-left-buttons">
-                        <button className="button">
-                            Cancelar
-                        </button>    
-                    </span>
-                    <span className="panel__footer-right-buttons">
-                        <button className="button">
-                            Guardar Borrador
-                        </button>
-                        <button className="button" onClick={this.backStep}>
-                            Anterior
-                        </button>
-                        {
-                            this.state.step !== 3 ?
-                                (<button className="button button--primary" onClick={this.nextStep}>Siguiente</button>)
-                            :
-                                (<button className="button button--primary">Publicar</button>)
-                        }
-                        
-                        
-                    </span>
-
+                    {buttons}
                 </div>
             </div>
         );

@@ -27,9 +27,12 @@
 
 .panel__footer {
     border-top: var(--panel-border);
+    padding: .5em;
+}
+
+.panel__footer > div {
     display: flex;
     justify-content: space-between;
-    padding: .5em;
 }
 
 .panel__footer-left-buttons > button,

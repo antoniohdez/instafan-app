@@ -8,10 +8,6 @@ class Header extends Component {
                 <div className="header__title">Inicio</div>
                 <nav className="header__right-menu">
                     <ul className="header-menu">
-                    	<li className="header-menu__item">
-                    		<i className="fa fa-fw fa-home"></i>
-                            <span> Inicio</span>
-                    	</li>
                         <li className="header-menu__item header-menu__item--thumbnail">
                             <img src="https://pbs.twimg.com/profile_images/721920865189781504/AlUaeaVh_normal.jpg" alt="profile picture thumbnail" />
                             <span> Antonio</span>
