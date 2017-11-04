@@ -17,17 +17,23 @@ class Header extends Component {
                             <i className="fa fa-fw fa-caret-down"></i>
                             <ul className="sub-menu sub-menu--left-of-parent">
                                 <li className="sub-menu__item">
-                                    <i className="fa fa-user"></i>
-                                    <span>&nbsp;Perfil</span>
+                                    <a href="#" className="sub-menu__item-link">
+                                        <i className="fa fa-user"></i>
+                                        <span>&nbsp;Perfil</span>
+                                    </a>
                                 </li>
                                 <li className="sub-menu__item">
-                                    <i className="fa fa-question-circle"></i>
-                                    <span>&nbsp;Ayuda</span>
+                                    <a href="#" className="sub-menu__item-link">
+                                        <i className="fa fa-question-circle"></i>
+                                        <span>&nbsp;Ayuda</span>
+                                    </a>
                                 </li>
                                 <div className="sub-menu__divider"></div>
                                 <li className="sub-menu__item">
-                                    <i className="fa fa-sign-out"></i>
-                                    <span>&nbsp;Cerrar Sesión</span>
+                                    <a href="/login" className="sub-menu__item-link">
+                                        <i className="fa fa-sign-out"></i>
+                                        <span>&nbsp;Cerrar Sesión</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>

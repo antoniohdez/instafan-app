@@ -71,8 +71,21 @@
     right: 0;
 }
 
-.sub-menu__item {
-    padding: .25em .75em;
+.sub-menu__item {}
+
+.sub-menu__item > a {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: .25em .75em;   
+    width: 100%;
+}
+
+.sub-menu__item-link {
+    color: var(--text-default-color) !important;
+}
+
+.sub-menu__item-link:hover {
+    color: white !important;
 }
 
 .header-menu__item:hover .sub-menu {

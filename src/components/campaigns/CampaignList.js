@@ -5,14 +5,16 @@ class Header extends Component {
         return (
             <div className="campaign-list">
                 <div className="panel campaign-item campaign-item--add">
-                    <i className="fa fa-plus-circle fa-5x"></i>
-                    <div>Crear Campaña</div>
+                    <a href="/campaigns/create">
+                        <i className="fa fa-plus-circle fa-5x"></i>
+                        <div>Crear Campaña</div>
+                    </a>
                 </div>
                 <div className="panel campaign-item">
                     <div className="campaign-item__status-bar">
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">
-                                <span className="fa fa-fw fa-check-circle campaign-status__icon campaign-status__icon--ok"></span>
+                                <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--ok"></span>
                                 <span className="campaign-status__text">Activo</span>
                             </span>
                         </span>
@@ -37,7 +39,7 @@ class Header extends Component {
                     <div className="campaign-item__status-bar">
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">
-                                <span className="fa fa-fw fa-warning campaign-status__icon campaign-status__icon--warning"></span>
+                                <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--warning"></span>
                                 <span className="campaign-status__text">Expira en 10 días</span>
                             </span>
                         </span>
@@ -72,7 +74,7 @@ class Header extends Component {
                     <div className="campaign-item__status-bar">
                         <span className="campaign-item__status-bar-item">
                             <span className="campaign-status">
-                                <span className="fa fa-fw fa-times-circle campaign-status__icon campaign-status__icon--expired"></span>
+                                <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--expired"></span>
                                 <span className="campaign-status__text">Inactivo</span>
                             </span>
                         </span>

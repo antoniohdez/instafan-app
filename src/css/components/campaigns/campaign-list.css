@@ -103,20 +103,29 @@
     Create Campaign Item
 */
 
-.campaign-item--add {
+.campaign-item--add {}
+
+.campaign-item--add > a {
     align-items: center;
-    cursor: pointer;
+    box-sizing: border-box;
     display: flex !important;
     flex-direction: column;
+    height: 100%;
     justify-content: center;
     padding: 1em;
     text-align: center;
+    width: 100%;
 }
 
-.campaign-item--add > i {
+.campaign-item--add > a:hover {
+    text-decoration: none;
+}
+
+.campaign-item--add > a > i {
     color: var(--primary-color);
 }
-.campaign-item--add > div {
+.campaign-item--add > a > div {
+    color: var(--text-default-color);
     font-size: 24px;
     margin-top: 0.75rem;
 }

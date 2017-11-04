@@ -10,7 +10,7 @@ import RecoverPassword from './components/sessions/RecoverPassword';
 class App extends Component {
     render() {
         return (
-            <Router>
+            <Router location={window.location}>
                 <Switch>
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
