@@ -51,7 +51,7 @@ class Register extends Component {
                     </div>  
                 </div>
                 <div className="login__register-message">
-                    ¿Ya tienes una cuenta? <a href="#">Inicia sesión</a>
+                    ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
                 </div>
                 <div className="login__copyright-message">
                     © Copyright 2017 - ILLUTIO, Realidad Aumentada y Geolocalización S de RL de CV

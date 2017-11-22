@@ -135,7 +135,7 @@ class Header extends Component {
                                         <div className="analytics-panel__table">
                                             <div className="analytics-panel__row-stat">
                                                 <div className="analytics-panel__cell">
-                                                    <img src="../sticker1.png" alt="campaign image" />
+                                                    <img src="../sticker1.png" alt="campaign" />
                                                 </div>
                                                 <div className="analytics-panel__cell">
                                                     3
@@ -143,7 +143,7 @@ class Header extends Component {
                                             </div>
                                             <div className="analytics-panel__row-stat">
                                                 <div className="analytics-panel__cell">
-                                                    <img src="../sticker2.png" alt="campaign image" />
+                                                    <img src="../sticker2.png" alt="campaign" />
                                                 </div>
                                                 <div className="analytics-panel__cell">
                                                     5
@@ -151,7 +151,7 @@ class Header extends Component {
                                             </div>
                                             <div className="analytics-panel__row-stat">
                                                 <div className="analytics-panel__cell">
-                                                    <img src="../sticker3.png" alt="campaign image" />
+                                                    <img src="../sticker3.png" alt="campaign" />
                                                 </div>
                                                 <div className="analytics-panel__cell">
                                                     10
@@ -159,7 +159,7 @@ class Header extends Component {
                                             </div>
                                             <div className="analytics-panel__row-stat">
                                                 <div className="analytics-panel__cell">
-                                                    <img src="../sticker4.png" alt="campaign image" />
+                                                    <img src="../sticker4.png" alt="campaign" />
                                                 </div>
                                                 <div className="analytics-panel__cell">
                                                     6
@@ -167,7 +167,7 @@ class Header extends Component {
                                             </div>
                                             <div className="analytics-panel__row-stat">
                                                 <div className="analytics-panel__cell">
-                                                    <img src="../sticker5.png" alt="campaign image" />
+                                                    <img src="../sticker5.png" alt="campaign" />
                                                 </div>
                                                 <div className="analytics-panel__cell">
                                                     14
@@ -175,7 +175,7 @@ class Header extends Component {
                                             </div>
                                             <div className="analytics-panel__row-stat">
                                                 <div className="analytics-panel__cell">
-                                                    <img src="../sticker6.png" alt="campaign image" />
+                                                    <img src="../sticker6.png" alt="campaign" />
                                                 </div>
                                                 <div className="analytics-panel__cell">
                                                     1

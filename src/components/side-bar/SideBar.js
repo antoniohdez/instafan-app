@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 class SideBar extends Component {
     render() {
@@ -7,13 +7,13 @@ class SideBar extends Component {
             <section className="side-bar">
                 <nav className="side-bar__menu">
 	                <ul className="side-menu">
-                        <li className="side-menu__item">
+                        <li className="side-menu__item side-menu__item--active">
                             <a href="/">
                                 <i className="fa fa-fw fa-home"></i>
                                 <span className="side-menu__item-label"> Inicio</span>
                             </a>
                         </li>
-                        <li className="side-menu__item side-menu__item--active">
+                        <li className="side-menu__item">
                             <a href="/campaigns">
                                 <i className="fa fa-fw fa-flag"></i>
                                 <span className="side-menu__item-label"> Campañas</span>
