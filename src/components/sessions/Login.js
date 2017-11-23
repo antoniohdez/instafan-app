@@ -18,6 +18,8 @@ class Login extends Component {
     onSubmit(event) {
         event.preventDefault();
 
+        debugger;
+
         const body = {
             email: this.state.email,
             password: this.state.password
