@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     
@@ -6,10 +7,10 @@ class Header extends Component {
         return (
             <div className="campaign-list">
                 <div className="panel campaign-item campaign-item--add">
-                    <a href="/campaigns/create">
+                    <Link to="/campaigns/create">
                         <i className="fa fa-plus-circle fa-5x"></i>
                         <div>Crear Campaña</div>
-                    </a>
+                    </Link>
                 </div>
                 <div className="panel campaign-item">
                     <div className="campaign-item__status-bar">

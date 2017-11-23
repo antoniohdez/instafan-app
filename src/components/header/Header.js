@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -17,23 +18,23 @@ class Header extends Component {
                             <i className="fa fa-fw fa-caret-down"></i>
                             <ul className="sub-menu sub-menu--left-of-parent">
                                 <li className="sub-menu__item">
-                                    <a href="/profile" className="sub-menu__item-link">
+                                    <Link to="/profile" className="sub-menu__item-link">
                                         <i className="fa fa-user"></i>
                                         <span>&nbsp;Perfil</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="sub-menu__item">
-                                    <a href="/help" className="sub-menu__item-link">
+                                    <Link to="/help" className="sub-menu__item-link">
                                         <i className="fa fa-question-circle"></i>
                                         <span>&nbsp;Ayuda</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <div className="sub-menu__divider"></div>
                                 <li className="sub-menu__item">
-                                    <a href="/login" className="sub-menu__item-link">
+                                    <Link to="/login" className="sub-menu__item-link">
                                         <i className="fa fa-sign-out"></i>
                                         <span>&nbsp;Cerrar Sesión</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>

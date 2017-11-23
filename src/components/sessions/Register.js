@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
     render() {
@@ -51,7 +52,7 @@ class Register extends Component {
                     </div>  
                 </div>
                 <div className="login__register-message">
-                    ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
+                    ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
                 </div>
                 <div className="login__copyright-message">
                     © Copyright 2017 - ILLUTIO, Realidad Aumentada y Geolocalización S de RL de CV

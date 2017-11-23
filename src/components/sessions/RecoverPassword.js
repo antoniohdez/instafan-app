@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class RecoverPassword extends Component {
     render() {
@@ -26,6 +27,9 @@ class RecoverPassword extends Component {
 	            		</form>
 	            	</div>	
             	</div>
+                <div className="login__register-message">
+                    ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
+                </div>
             	<div className="login__copyright-message">
                     © Copyright 2017 - ILLUTIO, Realidad Aumentada y Geolocalización S de RL de CV
                 </div>

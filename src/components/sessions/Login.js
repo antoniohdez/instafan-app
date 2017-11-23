@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import customFetch from '../../js/util/fetch';
 
 class Login extends Component {
@@ -67,14 +68,14 @@ class Login extends Component {
                                     <button className="button button--primary">Iniciar Sesión</button>
                                 </div>
                                 <div className="form__element text-align--center">
-                                    <a href="/recover-password">Olvidé mi contraseña</a>
+                                    <Link to="/recover-password">Olvidé mi contraseña</Link>
                                 </div>
                             </div>
                         </form>
                     </div>  
                 </div>
                 <div className="login__register-message">
-                    ¿No tienes una cuenta? <a href="register">Regístrate</a>
+                    ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
                 </div>
                 <div className="login__copyright-message">
                     © Copyright 2017 - ILLUTIO, Realidad Aumentada y Geolocalización S de RL de CV

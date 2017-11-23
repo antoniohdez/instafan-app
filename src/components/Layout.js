@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom';
 import Header from './header/Header';
 import SideBar from './side-bar/SideBar';
 import MainContainer from './MainContainer';
