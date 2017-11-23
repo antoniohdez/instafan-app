@@ -1,9 +1,7 @@
 const exports = {};
 
 exports.get = function(url) {
-    const req = fetch(url);
-    return req
-    	.then(getJson);
+    return exports.fetch(url);
 }
 
 exports.post = function(url, body, options = {}) {
@@ -16,10 +14,27 @@ exports.post = function(url, body, options = {}) {
     };
 	
 	options = { ...defaultOptions, ...options }
-    return fetch(url, options)
-    	.then(getJson);
+    return exports.fetch(url, options);
 }
 
-const getJson = (req) => req.json();
+// Wrapper to handle error status codes in the catch method.
+exports.fetch = function(url, options) {
+	const p = new Promise((resolve, reject) => {
+		const req = fetch(url, options);
+		req.then((response) => {
+			if (response.ok) {
+				resolve(response.json());
+			} else {
+				reject(response.json());
+			}
+		});
+		req.catch((error) => {
+			reject(error);
+		});
+	});
+	return p;
+}
+
+const getJson = (response) => response.json();
 
 export default exports;

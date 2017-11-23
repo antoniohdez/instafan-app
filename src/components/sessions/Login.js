@@ -19,8 +19,6 @@ class Login extends Component {
     onSubmit(event) {
         event.preventDefault();
 
-        debugger;
-
         const body = {
             email: this.state.email,
             password: this.state.password
@@ -28,15 +26,11 @@ class Login extends Component {
 
         const req = customFetch.post('http://localhost:8000/auth/login', body);
         req.then((result) => {
-            console.log(result);
-            if (result.token) {
-                window.location.assign("/");
-            }
-            
+            // Save result.token before redirect to "/"
+            this.props.history.push('/');
         });
         req.catch((error) => {
             console.log(error);
-            console.log("Error");
         });
     }
 
