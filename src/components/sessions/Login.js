@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import customFetch from '../../js/util/fetch';
+import auth from '../../js/util/auth';
 
 class Login extends Component {
     constructor(props) {
@@ -19,19 +19,14 @@ class Login extends Component {
     onSubmit(event) {
         event.preventDefault();
 
-        const body = {
-            email: this.state.email,
-            password: this.state.password
-        };
-
-        const req = customFetch.post('http://localhost:8000/auth/login', body);
-        req.then((result) => {
-            // Save result.token before redirect to "/"
-            this.props.history.push('/');
-        });
-        req.catch((error) => {
-            console.log(error);
-        });
+        auth.signIn(this.state.email, this.state.password)
+            .then((response) => {
+                this.props.history.push('/');
+            })
+            .catch((error) => {
+                // Show error in login...
+                console.log(error);
+            });
     }
 
     render() {

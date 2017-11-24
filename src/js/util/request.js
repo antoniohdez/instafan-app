@@ -35,6 +35,6 @@ exports.fetch = function(url, options) {
 	return p;
 }
 
-const getJson = (response) => response.json();
+//const getJson = (response) => response.json();
 
 export default exports;
