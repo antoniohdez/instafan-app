@@ -7,17 +7,25 @@ class Login extends Component {
         super(props);
         this.state = {};
 
-        this.onBlur = this.onBlur.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
+        // Handle redirect (redirect if session is valid)
+        // Check how to implement signout in frontend (option in header)
     }
 
-    onBlur(event) {
+    onChange(event) {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     }
 
     onSubmit(event) {
         event.preventDefault();
+
+        const loginBtn = document.querySelector('#login-btn');
+        console.dir(loginBtn);
+        loginBtn.disabled = true;
+        loginBtn.innerText = 'Cargando...'
 
         auth.signIn(this.state.email, this.state.password)
             .then((response) => {
@@ -26,16 +34,18 @@ class Login extends Component {
             .catch((error) => {
                 // Show error in login...
                 console.log(error);
+                loginBtn.disabled = false;
+                loginBtn.innerText = 'Iniciar Sesión'
             });
     }
 
     render() {
         return (
             <div className="login__container">
+                <div>Error</div>
                 <div className="panel">
                     <div className="panel__header">
                         <header className="login__header">
-                    
                         </header>
                     </div>
                     <div className="panel__content">
@@ -45,16 +55,16 @@ class Login extends Component {
                                     <label className="form__label">
                                         Correo electrónico
                                     </label>
-                                    <input name="email" type="text" onBlur={this.onBlur} />
+                                    <input name="email" type="email" onChange={this.onChange} required />
                                 </div>
                                 <div className="form__element">
                                     <label className="form__label">
                                         Contraseña
                                     </label>
-                                    <input name="password" type="password" onBlur={this.onBlur} />
+                                    <input name="password" type="password" onChange={this.onChange} required />
                                 </div>
                                 <div className="form__element">
-                                    <button className="button button--primary">Iniciar Sesión</button>
+                                    <button id="login-btn" className="button button--primary">Iniciar Sesión</button>
                                 </div>
                                 <div className="form__element text-align--center">
                                     <Link to="/recover-password">Olvidé mi contraseña</Link>

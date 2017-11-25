@@ -31,7 +31,7 @@ class Header extends Component {
                                 </li>
                                 <div className="sub-menu__divider"></div>
                                 <li className="sub-menu__item">
-                                    <Link to="/login" className="sub-menu__item-link">
+                                    <Link to="/logout" className="sub-menu__item-link">
                                         <i className="fa fa-sign-out"></i>
                                         <span>&nbsp;Cerrar Sesión</span>
                                     </Link>

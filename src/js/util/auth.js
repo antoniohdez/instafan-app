@@ -38,7 +38,7 @@ exports.signIn = function(email, password) {
 };
 
 exports.signOut = function() {
-
+    localStorage.removeItem('accessToken');
 };
 
 export default exports;

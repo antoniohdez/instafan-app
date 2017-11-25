@@ -40,6 +40,11 @@
     background-color: var(--decreased-primary-color);
 }
 
+.button--primary:disabled {
+    background-color: var(--disabled-primary-color);
+    color: var(--text-disabled-primary-color);
+}
+
 /*
     Secondary
 */
