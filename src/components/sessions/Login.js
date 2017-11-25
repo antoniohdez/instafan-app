@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Notification from '../notification/Notification';
 import auth from '../../js/util/auth';
 
 class Login extends Component {
@@ -36,13 +37,13 @@ class Login extends Component {
                 console.log(error);
                 loginBtn.disabled = false;
                 loginBtn.innerText = 'Iniciar Sesión'
+                this.setState({ notificationVisible: true });
             });
     }
 
     render() {
         return (
             <div className="login__container">
-                <div>Error</div>
                 <div className="panel">
                     <div className="panel__header">
                         <header className="login__header">
@@ -73,6 +74,7 @@ class Login extends Component {
                         </form>
                     </div>  
                 </div>
+                <Notification />
                 <div className="login__register-message">
                     ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
                 </div>

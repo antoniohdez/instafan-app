@@ -1,0 +1,43 @@
+.notification {
+	align-items: center;
+	background-color: var(--status-color-info);
+	border-radius: 2px;
+	bottom: 2rem;
+	color: white;
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+	position: absolute;
+	right: 2rem;
+	
+}
+
+.notification--success {
+	background-color: var(--status-color-ok);
+}
+
+.notification--warning {
+	background-color: var(--status-color-warning);
+}
+
+.notification--error {
+	background-color: var(--status-color-danger);
+	opacity: .8;
+}
+
+.notification__icon {
+	padding: 1rem 1rem 1rem 0;
+}
+
+.notification__text-container {
+	max-width: 250px;
+}
+
+.notification__title {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.notification__detail {
+	margin-top: 5px;
+}

@@ -10,6 +10,7 @@
 @import url('util/form/form.css');
 @import url('util/panel/panel.css');
 @import url('util/status/status.css');
+@import url('util/notification/notification.css');
 
 
 html, body {
