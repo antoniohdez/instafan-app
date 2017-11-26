@@ -4,6 +4,12 @@ const exports = {};
 
 exports.verifySession = function() {
     const p = new Promise((resolve, reject) => {
+        if ( !localStorage.getItem('accessToken') ) {
+            reject({
+                'message': 'empty token'
+            });
+            return;
+        }
         const options = {
             headers: {
                 'x-access-token': localStorage.getItem('accessToken')

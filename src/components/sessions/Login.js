@@ -16,8 +16,6 @@ class Login extends Component {
                 this.props.history.push('/');
             })
             .catch((error) => {})
-
-        // Handle redirect (redirect if session is valid)
     }
 
     onChange(event) {

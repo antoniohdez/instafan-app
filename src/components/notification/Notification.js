@@ -21,9 +21,8 @@ class Notification extends Component {
                 notificationIcon += 'fa-check'
                 break;
             case 'info':
+            default:
                 notificationIcon += 'fa-info-circle'
-                break;
-
         }
 
         return (
