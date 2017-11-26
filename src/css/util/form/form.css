@@ -59,7 +59,8 @@
 }
 
 .form__element > input,
-.form__icon-input > input {
+.form__icon-input > input,
+.form__element > select {
     background-color: var(--input-background-color);
     border-color: var(--input-border-color);
     border-style: solid;
@@ -72,7 +73,8 @@
 }
 
 .form__element > input,
-.form__element > button {
+.form__element > button,
+.form__element > select {
     border-radius: var(--input-border-radius);
     width: 100%;
 }
@@ -83,7 +85,8 @@
 }
 
 .form__element > input:focus, 
-.form__icon-input > input:focus {
+.form__icon-input > input:focus,
+.form__element > select:focus {
     outline: var(--input-outline);
 }
 

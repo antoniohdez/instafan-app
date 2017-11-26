@@ -7,24 +7,25 @@ class SideBar extends Component {
             <section className="side-bar">
                 <nav className="side-bar__menu">
 	                <ul className="side-menu">
-                        <li className="side-menu__item side-menu__item--active">
+                        <li className="side-menu__item">
                             <Link to="/">
                                 <i className="fa fa-fw fa-home"></i>
                                 <span className="side-menu__item-label"> Inicio</span>
                             </Link>
                         </li>
+                        {/* side-menu__item--active */}
                         <li className="side-menu__item">
                             <Link to="/campaigns">
                                 <i className="fa fa-fw fa-flag"></i>
                                 <span className="side-menu__item-label"> Campañas</span>
                             </Link>
                         </li>
-                        <li className="side-menu__item">
+                        {/*li className="side-menu__item">
                             <Link to="/analytics">
                                 <i className="fa fa-fw fa-line-chart"></i>
                                 <span className="side-menu__item-label"> Estadísticas</span>
                             </Link>
-                        </li>
+                        </li*/}
                     </ul>
                     <div className="side-bar__call-to-action">
                     	<Link to="/campaigns/create" className="button button--primary">

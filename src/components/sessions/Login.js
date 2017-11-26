@@ -11,8 +11,13 @@ class Login extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
+        auth.verifySession()
+            .then((response) => {
+                this.props.history.push('/');
+            })
+            .catch((error) => {})
+
         // Handle redirect (redirect if session is valid)
-        // Check how to implement signout in frontend (option in header)
     }
 
     onChange(event) {
@@ -37,7 +42,7 @@ class Login extends Component {
                 console.log(error);
                 loginBtn.disabled = false;
                 loginBtn.innerText = 'Iniciar Sesión';
-                this.setState({ showErrors: true });    
+                this.setState({ showErrors: true });
 
             });
     }
@@ -78,7 +83,7 @@ class Login extends Component {
                                     <button id="login-btn" className="button button--primary">Iniciar Sesión</button>
                                 </div>
                                 <div className="form__element text-align--center">
-                                    <Link to="/recover-password">Olvidé mi contraseña</Link>
+                                    {/* <Link to="/recover-password">Olvidé mi contraseña</Link> */}
                                 </div>
                             </div>
                         </form>
