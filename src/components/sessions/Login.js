@@ -36,12 +36,22 @@ class Login extends Component {
                 // Show error in login...
                 console.log(error);
                 loginBtn.disabled = false;
-                loginBtn.innerText = 'Iniciar Sesión'
-                this.setState({ notificationVisible: true });
+                loginBtn.innerText = 'Iniciar Sesión';
+                this.setState({ showErrors: true });    
+
             });
     }
 
     render() {
+        let notification;
+        if (this.state.showErrors) {
+            const options = {
+                type: 'error',
+                title: 'Credenciales incorrectas',
+                detail: ''
+            };
+            notification = <Notification options={options} />;
+        }
         return (
             <div className="login__container">
                 <div className="panel">
@@ -74,7 +84,7 @@ class Login extends Component {
                         </form>
                     </div>  
                 </div>
-                <Notification />
+                { notification }
                 <div className="login__register-message">
                     ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
                 </div>
