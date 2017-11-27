@@ -25,8 +25,14 @@ class Register extends Component {
             this.setState({ 
                 showErrors: true,
                 password: '',
-                passwordConfirmation: ''
+                passwordConfirmation: '',
+                error: {
+                    type: 'error',
+                    title: 'Error',
+                    detail: 'La confirmación de contraseña es incorrecta.'    
+                }
             });
+
             return ;
         }
 
@@ -44,20 +50,21 @@ class Register extends Component {
                 console.log(error);
                 registerBtn.disabled = false;
                 registerBtn.innerText = 'Iniciar Sesión';
-                this.setState({ showErrors: true });
+                
+                this.setState({ error: {
+                        type: 'error',
+                        title: 'Error',
+                        detail: 'Datos inválidos.'
+                    } 
+                });
 
             });
     }
 
     render() {
         let notification;
-        if (this.state.showErrors) {
-            const options = {
-                type: 'error',
-                title: 'Error',
-                detail: 'Datos inválidos.'
-            };
-            notification = <Notification options={options} />;
+        if (this.state.error) {
+            notification = <Notification options={this.state.error} />;
         }
         return (
             <div className="login__container">

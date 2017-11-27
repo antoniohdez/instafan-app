@@ -13,13 +13,20 @@
 .side-menu__item:hover {
     background-color: #394250;
     border-left: 3px solid var(--primary-color);
-    
+}
+
+.side-menu__item:hover > a {
+    padding-left: calc(1em - 3px) !important;
 }
 
 .side-menu__item--active {
     background-color: #394250;
     border-left: 3px #00AE69 solid;
-    
+    padding-left: calc(1em - 3px) !important;
+}
+
+.side-menu__item--active:hover {
+    border-left: 0px;
 }
 
 .side-menu__item > a{
@@ -29,10 +36,6 @@
     padding: 1em;
     text-decoration: none !important;
     width: 100%;
-}
-
-.side-menu__item > a:hover {
-    padding-left: calc(1em - 3px);
 }
 
 @media (max-width: 1024px) {
