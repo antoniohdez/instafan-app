@@ -3,14 +3,68 @@ import React, { Component } from 'react';
 class CampaignForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { step: 1 };
+        this.state = { 
+            step: 1,
+            name: '', // Controlled input
+            hashtag: '', // Controlled input
 
+        };
+
+        this.onImageChange = this.onImageChange.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onCancel = this.onCancel.bind(this);
         this.nextStep = this.nextStep.bind(this);
         this.backStep = this.backStep.bind(this);
     }
 
+    onImageChange(event) {
+        const self = this;
+        event.persist();
+
+        if (event.target.files && event.target.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = (e) => {
+                event.target.src = e.target.result;
+                self.setState({ target: e.target.result });
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+        } else {
+            this.setState({ target: undefined });
+        }
+    }
+
+    onInputChange(event) {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    }
+
+    onSubmit() {
+        console.log("Submit!");
+        /*if ( !(this.state.stickers.length >= 4 && this.state.stickers.length <= 8) ) {
+            return;
+        }*/
+    }
+
+    onCancel() {
+        this.props.history.goBack();
+    }
+
     nextStep() {
-        this.setState({ step: this.state.step + 1 });
+        if ( this.state.step === 1 ) {
+            if ( !(this.state.target && this.state.name && this.state.hashtag) ) {
+                alert('Completa los campo requeridos.');
+                return;
+            }
+        }/* else if ( this.state.step === 2 ) {
+            if ( !(this.state.stickers.length >= 4 && this.state.stickers.length <= 8) ) {
+                return;
+            }
+        }*/
+        
+        this.setState({ step: this.state.step + 1 });        
     }
 
     backStep() {
@@ -21,14 +75,14 @@ class CampaignForm extends Component {
         return (
             <div>
                 <span className="panel__footer-left-buttons">
-                    <button className="button">
+                    <button className="button" onClick={this.onCancel}>
                         Cancelar
                     </button>
                 </span>
                 <span className="panel__footer-right-buttons">
-                    <button className="button">
+                    {/*<button className="button">
                         Guardar Borrador
-                    </button>
+                    </button>*/}
                     {
                         this.state.step !== 1 ? (
                             <button className="button" onClick={this.backStep}>
@@ -40,7 +94,7 @@ class CampaignForm extends Component {
                         this.state.step !== 2 ? (
                             <button className="button button--primary" onClick={this.nextStep}>Siguiente</button>
                         ) : (
-                            <button className="button button--primary">Publicar</button>
+                            <button className="button button--primary" onClick={this.onSubmit}>Publicar</button>
                         )
                     }
                 </span>
@@ -55,16 +109,27 @@ class CampaignForm extends Component {
             element = (
                 <div className="form__row">
                     <div className="form__column form__column--1">
-                        <div className="form__element form__drag-n-drop-element form__drag-n-drop-element--target">
-                            <div className="form__label">
-                                Target 
-                                <i className="fa fa-asterisk"></i>
-                            </div>
-                            <div className="form__drag-n-drop-input">
-                                <input id="target" type="file" />
-                                <label for="target">Selecciona o arrastra un archivo</label>
-                            </div>
-                        </div>
+                        {
+                            ( !this.state.target ) ?
+                                <div className="form__element form__drag-n-drop-element form__drag-n-drop-element--target">
+                                    <div className="form__label">
+                                        Target 
+                                        <i className="fa fa-asterisk"></i>
+                                    </div>
+                                    <div className="form__drag-n-drop-input">
+                                        <input id="target" type="file" onChange={this.onImageChange} />
+                                        <label htmlFor="target">Selecciona un archivo</label>
+                                    </div>
+                                </div>
+                            :   
+                                <div className="form__element">
+                                    <div className="form__label">
+                                        Target 
+                                        <i className="fa fa-asterisk"></i>
+                                    </div>
+                                    <img src={this.state.target} className="form__image-preview" alt="target" />
+                                </div>
+                        }
                     </div>
                     <div className="form__column--divider"></div>
                     <div className="form__column form__column--1">
@@ -73,7 +138,7 @@ class CampaignForm extends Component {
                                 Nombre de Campaña
                                 <i className="fa fa-asterisk"></i>
                             </label>
-                            <input type="text" />
+                            <input name="name" type="text" value={this.state.name} onChange={this.onInputChange} />
                         </div>
                         <div className="form__element">
                             <label className="form__label">
@@ -82,7 +147,7 @@ class CampaignForm extends Component {
                             </label>
                             <div className="form__icon-input">
                                 <span className="fa fa-fw fa-hashtag"></span>
-                                <input type="text" />
+                                <input name="hashtag" type="text" value={this.state.hashtag} onChange={this.onInputChange} />
                             </div>
                             
                         </div>
@@ -101,7 +166,7 @@ class CampaignForm extends Component {
                                 </div>
                                 <div className="form__drag-n-drop-input">
                                     <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                    <label htmlFor="target">Selecciona un archivo</label>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +185,7 @@ class CampaignForm extends Component {
                                 </div>
                                 <div className="form__drag-n-drop-input">
                                     <input id="target" type="file" />
-                                    <label for="target">Selecciona o arrastra un archivo</label>
+                                    <label htmlFor="target">Selecciona un archivo</label>
                                 </div>
                             </div>
                         </div>

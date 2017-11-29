@@ -90,6 +90,10 @@
     outline: var(--input-outline);
 }
 
+.form__element > img {
+    max-width: 100%;
+}
+
 .form__icon-input {
     display: flex;
     align-items: center;
