@@ -4,35 +4,113 @@ class CampaignForm extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            step: 1,
+            step: 2,
+            target: '',
             name: '', // Controlled input
             hashtag: '', // Controlled input
-
+            stickers: [],
+            watermark: ''
         };
 
-        this.onImageChange = this.onImageChange.bind(this);
+        this.onTargetChange = this.onTargetChange.bind(this);
+        this.onStickerPush = this.onStickerPush.bind(this);
+        this.onStickerRemove = this.onStickerRemove.bind(this);
+        this.onWatermarkChange = this.onWatermarkChange.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onCancel = this.onCancel.bind(this);
         this.nextStep = this.nextStep.bind(this);
         this.backStep = this.backStep.bind(this);
+        this.displayImage = this.displayImage.bind(this);
     }
 
-    onImageChange(event) {
+    validateTarget(image) {
+        const MAX_FILE_SIZE = 2.25 * 1024 * 1014 // Size in Bytes (Max 2.25MB)
+        let valid = true;
+
+        if ( image.size >= MAX_FILE_SIZE ) {
+            alert("El tamaño máximo es de 2.25MB");
+            
+            valid = false;
+        }
+        if ( ![ "image/png", "image/jpeg" ].includes(image.type) ) {
+            alert("Los formatos válidos son .png y .jpg");
+
+            valid = false;
+        } 
+
+        return valid;
+    }
+
+    displayImage(target, image) {
         const self = this;
+        var reader = new FileReader();
+        
+        reader.onload = (e) => {
+            target.src = e.target.result;
+            self.setState({ target: e.target.result });
+        };
+
+        reader.readAsDataURL( image );
+    }
+
+    onTargetChange(event) {
         event.persist();
 
-        if (event.target.files && event.target.files[0]) {
-            var reader = new FileReader();
+        const target = event.target;
+        const image = ( target.files && target.files[0] ) ? target.files[0] : undefined ;
 
+        if (image && this.validateTarget(image)) {
+            this.displayImage(target, image);
+        } else {
+            target.value = "";
+            this.setState({ target: undefined });
+        }
+    }
+
+    onStickerPush(event) {
+        event.persist();
+        const self = this;
+        const target = event.target;
+        const image = ( target.files && target.files[0] ) ? target.files[0] : undefined ;
+
+        // Check validation for stickers
+        if (image) {
+            
+            var reader = new FileReader();
+            
             reader.onload = (e) => {
-                event.target.src = e.target.result;
-                self.setState({ target: e.target.result });
+                const stickers = self.state.stickers;
+                stickers.push(e.target.result);
+                
+                self.setState({ stickers: stickers });
             };
 
-            reader.readAsDataURL(event.target.files[0]);
+            reader.readAsDataURL( image );
+        }
+    }
+
+    onStickerRemove(event) {
+
+    }
+
+    onWatermarkChange(event) {
+        event.persist();
+        const self = this;
+        const target = event.target;
+        const image = ( target.files && target.files[0] ) ? target.files[0] : undefined ;
+
+        // Check validation for stickers
+        if (image) {
+            var reader = new FileReader();
+            
+            reader.onload = (e) => {                
+                self.setState({ watermark: e.target.result });
+            };
+
+            reader.readAsDataURL( image );
         } else {
-            this.setState({ target: undefined });
+            self.setState({ watermark: undefined });
         }
     }
 
@@ -43,9 +121,11 @@ class CampaignForm extends Component {
 
     onSubmit() {
         console.log("Submit!");
-        /*if ( !(this.state.stickers.length >= 4 && this.state.stickers.length <= 8) ) {
-            return;
-        }*/
+        if ( this.state.stickers.length >= 4 && this.state.stickers.length <= 8 ) {
+            alert("Submit")
+        } else {
+            alert("Selecciona al menos 4 stickers.")
+        }
     }
 
     onCancel() {
@@ -117,7 +197,7 @@ class CampaignForm extends Component {
                                         <i className="fa fa-asterisk"></i>
                                     </div>
                                     <div className="form__drag-n-drop-input">
-                                        <input id="target" type="file" onChange={this.onImageChange} />
+                                        <input id="target" type="file" onChange={this.onTargetChange} />
                                         <label htmlFor="target">Selecciona un archivo</label>
                                     </div>
                                 </div>
@@ -158,24 +238,50 @@ class CampaignForm extends Component {
             element = (
                 <div>
                     <div className="form__row">
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__label">
-                                    Stickers
-                                    <i className="fa fa-asterisk"></i>
+                        {
+                            this.state.stickers.map((sticker, i) => (
+                                    <div className="form__column" key={`sticker ${i}`}>
+                                        <div className="form__element form__drag-n-drop-element">
+                                            <div className="form__label">
+                                                { (i === 0) ? 'Stickers (min 4)' : <span>&nbsp;</span> }
+                                                { (i === 0) ? <i className="fa fa-asterisk"></i> : null }
+                                            </div>
+                                            <div className="form__drag-n-drop-input">
+                                                <img src={sticker} alt="sticker" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            )
+                        }
+                        {
+                            (this.state.stickers.length <= 7) ?
+                                <div className="form__column">
+                                    <div className="form__element form__drag-n-drop-element">
+                                        <div className="form__label">
+                                            { (this.state.stickers.length === 0) ? 'Stickers (min 4)' : <span>&nbsp;</span> }
+                                            { (this.state.stickers.length === 0) ? <i className="fa fa-asterisk"></i> : null }
+                                        </div>
+                                        <div className="form__drag-n-drop-input">
+                                            <input id="target" type="file" onChange={this.onStickerPush} />
+                                            <label htmlFor="target">Selecciona un archivo</label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label htmlFor="target">Selecciona un archivo</label>
+                            :
+                                null
+                        }
+                        {
+                            (this.state.stickers.length <= 6) ?
+                                <div className="form__column">
+                                    <div className="form__element form__drag-n-drop-element">
+                                        <div className="form__drag-n-drop-input form__drag-n-drop-input--placeholder">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="form__column">
-                            <div className="form__element form__drag-n-drop-element">
-                                <div className="form__drag-n-drop-input form__drag-n-drop-input--placeholder">
-                                </div>
-                            </div>
-                        </div>
+                            :
+                                null
+                        }
                     </div>
                     <div className="form__row">
                         <div className="form__column">
@@ -184,8 +290,15 @@ class CampaignForm extends Component {
                                     Marca de Agua
                                 </div>
                                 <div className="form__drag-n-drop-input">
-                                    <input id="target" type="file" />
-                                    <label htmlFor="target">Selecciona un archivo</label>
+                                    {
+                                        (this.state.watermark) ? 
+                                            <img src={this.state.watermark} alt="watermark" />
+                                        :
+                                            [
+                                                <input id="watermark" type="file" onChange={this.onWatermarkChange} key={1} />,
+                                                <label htmlFor="watermark" key={2}>Selecciona un archivo</label>
+                                            ]
+                                    }
                                 </div>
                             </div>
                         </div>

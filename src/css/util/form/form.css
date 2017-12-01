@@ -122,6 +122,7 @@
 }
 
 .form__drag-n-drop-element > .form__drag-n-drop-input > label,
+.form__drag-n-drop-element > .form__drag-n-drop-input > img,
 .form__drag-n-drop-input--placeholder {
     align-items: center;
     background-color: var(--input-background-color);
@@ -136,6 +137,14 @@
     justify-content: center;
     padding: .25rem;
     text-align: center;
+}
+
+.form__drag-n-drop-element > .form__drag-n-drop-input > img {
+    border: none;
+    object-fit: contain;
+    height: calc(104px + .5rem);
+    padding: 0;
+    width: calc(104px + .5rem);
 }
 
 .form__drag-n-drop-input--placeholder {
