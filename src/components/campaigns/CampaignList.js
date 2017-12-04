@@ -11,12 +11,28 @@ class Header extends Component {
 
         request.get('http://localhost:8000/campaigns')
             .then((response) => {
-                console.log(response);
-                this.setState({ campaigns: response });
+                const list = response.filter((campaign) => {
+                    return campaign.status === 'active';
+                });
+                this.setState({ campaigns: list });
             }).catch((error) => {
                 console.log(error);
             });
 
+        this.deleteCampaign = this.deleteCampaign.bind(this);
+    }
+
+    deleteCampaign(event) {
+        const campaignID = event.currentTarget.dataset.campaignId;
+        request.delete(`http://localhost:8000/campaigns/${campaignID}`)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        debugger;
     }
 
     render() {
@@ -42,7 +58,9 @@ class Header extends Component {
                                         {/*<span className="campaign-item__status-bar-button">
                                             <i className="fa fa-fw fa-pencil"></i>    
                                         </span>*/}
-                                        <span className="campaign-item__status-bar-button campaign-item__status-bar-button--danger">
+                                        <span className="campaign-item__status-bar-button campaign-item__status-bar-button--danger"
+                                            data-campaign-id={campaign._id}
+                                            onClick={this.deleteCampaign} >
                                             <i className="fa fa-fw fa-trash-o"></i>
                                         </span>
                                     </span>

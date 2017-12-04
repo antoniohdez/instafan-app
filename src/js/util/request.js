@@ -17,6 +17,10 @@ exports.post = function(url, body, options = {}) {
     return exports.fetch(url, options);
 }
 
+exports.delete = function(url) {
+    return exports.fetch(url, { method: 'DELETE' });
+}
+
 // Wrapper to handle error status codes in the catch method.
 exports.fetch = function(url, options = {}) {
 	const p = new Promise((resolve, reject) => {
