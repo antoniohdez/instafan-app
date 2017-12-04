@@ -18,19 +18,18 @@ exports.post = function(url, body, options = {}) {
 }
 
 // Wrapper to handle error status codes in the catch method.
-exports.fetch = function(url, options) {
+exports.fetch = function(url, options = {}) {
 	const p = new Promise((resolve, reject) => {
-		const req = fetch(url, options);
-		req.then((response) => {
-			if (response.ok) {
-				resolve(response.json());
-			} else {
-				reject(response.json());
-			}
-		});
-		req.catch((error) => {
-			reject(error);
-		});
+		fetch(url, options)
+			.then((response) => {
+				if (response.ok) {
+					resolve(response.json());
+				} else {
+					reject(response.json());
+				}
+			}).catch((error) => {
+				reject(error);
+			});
 	});
 	return p;
 }

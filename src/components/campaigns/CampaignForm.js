@@ -131,7 +131,7 @@ class CampaignForm extends Component {
             request.post('http://localhost:8000/campaigns/', this.state, {})
             .then((response) => {
                 console.log(response);
-                this.props.history.push('/');
+                this.props.history.push('/campaigns');
             })
             .catch((error) => {
                 // Show error in login...

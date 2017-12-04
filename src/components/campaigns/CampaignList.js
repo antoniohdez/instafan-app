@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import request from '../../js/util/request';
 
 class Header extends Component {
-    
+    constructor(props) {
+        super(props);
+        this.state = { 
+            campaigns: []
+        };
+
+        request.get('http://localhost:8000/campaigns')
+            .then((response) => {
+                console.log(response);
+                this.setState({ campaigns: response });
+            }).catch((error) => {
+                console.log(error);
+            });
+
+    }
+
     render() {
         return (
             <div className="campaign-list">
@@ -12,101 +28,35 @@ class Header extends Component {
                         <div>Crear Campaña</div>
                     </Link>
                 </div>
-                <div className="panel campaign-item">
-                    <div className="campaign-item__status-bar">
-                        <span className="campaign-item__status-bar-item">
-                            <span className="campaign-status">
-                                <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--ok"></span>
-                                <span className="campaign-status__text">Activo</span>
-                            </span>
-                        </span>
-                        <span className="campaign-item__status-bar-item">
-                            <span className="campaign-item__status-bar-button">
-                                <i className="fa fa-fw fa-pencil"></i>    
-                            </span>
-                            <span className="campaign-item__status-bar-button campaign-item__status-bar-button--danger">
-                                <i className="fa fa-fw fa-trash-o"></i>
-                            </span>
-                        </span>
-                    </div>
-                    <div className="campaign-item__image">
-                        <img src="../test.png" alt="campaign" />
-                    </div>
-                    <div className="campaign-item__details">
-                        <div className="campaign-item__details-title">Campaña Kia Rio 2018</div>
-                        <div className="campaign-item__details-hashtag">#rio2018</div>
-                    </div>
-                </div>
-                <div className="panel campaign-item">
-                    <div className="campaign-item__status-bar">
-                        <span className="campaign-item__status-bar-item">
-                            <span className="campaign-status">
-                                <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--warning"></span>
-                                <span className="campaign-status__text">Expira en 10 días</span>
-                            </span>
-                        </span>
-                        <span className="campaign-item__status-bar-item campaign-header-menu">
-                            <i className="fa fa-fw fa-ellipsis-h"></i>
-                            <ul className="sub-menu sub-menu--left-of-parent">
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-info"></i>
-                                    <span> Ver detalle</span>
-                                </li>
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-pencil"></i>
-                                    <span> Editar</span>
-                                </li>
-                                <div className="sub-menu__divider"></div>
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-times"></i>
-                                    <span> Eliminar</span>
-                                </li>
-                            </ul>
-                        </span>
-                    </div>
-                    <div className="campaign-item__image">
-                        <img src="../test2.png" alt="campaign" />
-                    </div>
-                    <div className="campaign-item__details">
-                        <div className="campaign-item__details-title">Reporte Ciudadano</div>
-                        <div className="campaign-item__details-hashtag">#aguas</div>
-                    </div>
-                </div>
-                <div className="panel campaign-item">
-                    <div className="campaign-item__status-bar">
-                        <span className="campaign-item__status-bar-item">
-                            <span className="campaign-status">
-                                <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--expired"></span>
-                                <span className="campaign-status__text">Inactivo</span>
-                            </span>
-                        </span>
-                        <span className="campaign-item__status-bar-item campaign-header-menu">
-                            <i className="fa fa-fw fa-ellipsis-h"></i>
-                            <ul className="sub-menu sub-menu--left-of-parent">
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-info"></i>
-                                    <span> Ver detalle</span>
-                                </li>
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-pencil"></i>
-                                    <span> Editar</span>
-                                </li>
-                                <div className="sub-menu__divider"></div>
-                                <li className="sub-menu__item">
-                                    <i className="fa fa-fw fa-times"></i>
-                                    <span> Eliminar</span>
-                                </li>
-                            </ul>
-                        </span>
-                    </div>
-                    <div className="campaign-item__image">
-                        <img src="../oracle.png" alt="campaign" />
-                    </div>
-                    <div className="campaign-item__details">
-                        <div className="campaign-item__details-title">Oracle MDC</div>
-                        <div className="campaign-item__details-hashtag">#OracleMDC</div>
-                    </div>
-                </div>
+                {
+                    this.state.campaigns.map((campaign, i) => {
+                        return <div className="panel campaign-item" key={ `campaign_${i}` }>
+                                <div className="campaign-item__status-bar">
+                                    <span className="campaign-item__status-bar-item">
+                                        <span className="campaign-status">
+                                            <span className="fa fa-fw fa-circle campaign-status__icon campaign-status__icon--ok"></span>
+                                            <span className="campaign-status__text">{campaign.status}</span>
+                                        </span>
+                                    </span>
+                                    <span className="campaign-item__status-bar-item">
+                                        {/*<span className="campaign-item__status-bar-button">
+                                            <i className="fa fa-fw fa-pencil"></i>    
+                                        </span>*/}
+                                        <span className="campaign-item__status-bar-button campaign-item__status-bar-button--danger">
+                                            <i className="fa fa-fw fa-trash-o"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div className="campaign-item__image">
+                                    <img src={campaign.target} alt={campaign.name} />
+                                </div>
+                                <div className="campaign-item__details">
+                                    <div className="campaign-item__details-title">{campaign.name}</div>
+                                    <div className="campaign-item__details-hashtag">#{campaign.hashtag}</div>
+                                </div>
+                            </div>;
+                    })
+                }
             </div>
         );
     }
