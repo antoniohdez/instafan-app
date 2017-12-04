@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import request from '../../js/util/request';
 
 class CampaignForm extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            step: 2,
+            step: 1,
             target: '',
             name: '', // Controlled input
             hashtag: '', // Controlled input
@@ -120,9 +121,29 @@ class CampaignForm extends Component {
     }
 
     onSubmit() {
+        const registerBtn = document.querySelector('#submit-btn');
+        registerBtn.disabled = true;
+        registerBtn.innerText = 'Cargando...'
+
         console.log("Submit!");
         if ( this.state.stickers.length >= 4 && this.state.stickers.length <= 8 ) {
-            alert("Submit")
+            
+            request.post('http://localhost:8000/campaigns/', this.state, {})
+            .then((response) => {
+                console.log(response);
+                this.props.history.push('/');
+            })
+            .catch((error) => {
+                // Show error in login...
+                console.log(error);
+                registerBtn.disabled = false;
+                registerBtn.innerText = 'Error!';
+                
+                // Show alert...
+
+            });
+
+
         } else {
             alert("Selecciona al menos 4 stickers.")
         }
@@ -174,7 +195,7 @@ class CampaignForm extends Component {
                         this.state.step !== 2 ? (
                             <button className="button button--primary" onClick={this.nextStep}>Siguiente</button>
                         ) : (
-                            <button className="button button--primary" onClick={this.onSubmit}>Publicar</button>
+                            <button id="submit-btn" className="button button--primary" onClick={this.onSubmit}>Publicar</button>
                         )
                     }
                 </span>
