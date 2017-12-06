@@ -26,11 +26,16 @@
          --text-primary-color: white;
      --disabled-primary-color: #089752;
 --text-disabled-primary-color: #E5E5E5;
-    
+
               --secondary-color: #E38B2B;
        --raised-secondary-color: #EB9333;
     --decreased-secondary-color: #D37B1B;
          --text-secondary-color: white;
+
+                 --danger-color: #E03510;
+          --raised-danger-color: #F04520;
+       --decreased-danger-color: #D02500;
+            --text-danger-color: white;
 
          --status-color-ok: #00AE69;
     --status-color-warning: #F5A330;

@@ -23,6 +23,10 @@
     background-color: var(--decreased-default-color);
 }
 
+.button--margin {
+    margin: 0 5px;
+}
+
 /*
     Primary 
 */
@@ -60,4 +64,21 @@
 
 .button--secondary:active {
     background-color: var(--decreased-secondary-color);
+}
+
+/*
+    Secondary
+*/
+
+.button--danger {
+    background-color: var(--danger-color);
+    color: var(--text-danger-color);
+}
+
+.button--danger:hover {
+    background-color: var(--raised-danger-color);
+}
+
+.button--danger:active {
+    background-color: var(--decreased-danger-color);
 }

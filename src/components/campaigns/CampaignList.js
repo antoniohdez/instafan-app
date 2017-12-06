@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import request from '../../js/util/request';
+import swal from 'sweetalert2';
 
 class Header extends Component {
     constructor(props) {
@@ -23,16 +24,33 @@ class Header extends Component {
     }
 
     deleteCampaign(event) {
-        const campaignID = event.currentTarget.dataset.campaignId;
-        request.delete(`http://localhost:8000/campaigns/${campaignID}`)
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-        debugger;
+        swal({
+            title: '¿Eliminar campaña?',
+            text: 'Esta acción no puede ser revertida.',
+            type: 'warning',
+            showCancelButton: true,
+            //confirmButtonColor: '#3085d6',
+            //cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar campaña',
+            cancelButtonText: 'Cancelar',
+            confirmButtonClass: 'button button--danger button--margin',
+            cancelButtonClass: 'button',
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                const campaignID = event.currentTarget.dataset.campaignId;
+                request.delete(`http://localhost:8000/campaigns/${campaignID}`)
+                    .then((response) => {
+                        console.log(response);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });        
+            }/* else if (result.dismiss === 'cancel') {
+                
+            }*/
+        })
     }
 
     render() {

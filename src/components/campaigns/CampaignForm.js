@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import request from '../../js/util/request';
+import swal from 'sweetalert2';
 
 class CampaignForm extends Component {
     constructor(props) {
@@ -30,12 +31,18 @@ class CampaignForm extends Component {
         let valid = true;
 
         if ( image.size >= MAX_FILE_SIZE ) {
-            alert("El tamaño máximo es de 2.25MB");
+            swal({
+                text: 'El tamaño máximo es de 2.25MB',
+                type: 'warning'
+            });
             
             valid = false;
         }
         if ( ![ "image/png", "image/jpeg" ].includes(image.type) ) {
-            alert("Los formatos válidos son .png y .jpg");
+            swal({
+                text: 'Los formatos válidos son .png y .jpg',
+                type: 'warning'
+            });
 
             valid = false;
         } 
@@ -139,13 +146,19 @@ class CampaignForm extends Component {
                 registerBtn.disabled = false;
                 registerBtn.innerText = 'Error!';
                 
-                // Show alert...
+                swal({
+                    text: 'Ha ocurrido un error, por favor intentar de nuevo.',
+                    type: 'error'
+                });
 
             });
 
 
         } else {
-            alert("Selecciona al menos 4 stickers.")
+            swal({
+                text: 'Selecciona al menos 4 stickers.',
+                type: 'warning'
+            });
         }
     }
 
@@ -156,7 +169,11 @@ class CampaignForm extends Component {
     nextStep() {
         if ( this.state.step === 1 ) {
             if ( !(this.state.target && this.state.name && this.state.hashtag) ) {
-                alert('Completa los campo requeridos.');
+                swal({
+                    text: 'Completa los campo requeridos',
+                    type: 'warning'
+                });
+                
                 return;
             }
         }/* else if ( this.state.step === 2 ) {
