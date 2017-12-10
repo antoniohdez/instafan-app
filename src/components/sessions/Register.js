@@ -40,7 +40,7 @@ class Register extends Component {
         registerBtn.disabled = true;
         registerBtn.innerText = 'Cargando...'
 
-        request.post('http://localhost:8000/users/', this.state,{})
+        request.post('users/', this.state,{})
             .then((response) => {
                 console.log(response);
                 this.props.history.push('/');

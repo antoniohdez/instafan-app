@@ -15,7 +15,7 @@ exports.verifySession = function() {
                 'x-access-token': localStorage.getItem('accessToken')
             }
         }
-        request.fetch('http://localhost:8000/auth/verify-token', options)
+        request.fetch('auth/verify-token', options)
             .then((response) => {
                 resolve(response);
             })
@@ -31,7 +31,7 @@ exports.verifySession = function() {
 exports.signIn = function(email, password) {
     const body = { email, password };
 
-    const req = request.post('http://localhost:8000/auth/login', body);
+    const req = request.post('auth/login', body);
 
     req.then((result) => {
         localStorage.setItem('accessToken', result.accessToken);

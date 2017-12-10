@@ -1,4 +1,5 @@
 const exports = {};
+const baseUrl = 'http://antoniohdez.me:8080/';
 
 exports.get = function(url) {
     return exports.fetch(url);
@@ -23,8 +24,9 @@ exports.delete = function(url) {
 
 // Wrapper to handle error status codes in the catch method.
 exports.fetch = function(url, options = {}) {
+	const path = baseUrl + url;
 	const p = new Promise((resolve, reject) => {
-		fetch(url, options)
+		fetch(path, options)
 			.then((response) => {
 				if (response.ok) {
 					resolve(response.json());

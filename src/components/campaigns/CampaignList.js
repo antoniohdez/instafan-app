@@ -10,7 +10,7 @@ class Header extends Component {
             campaigns: []
         };
 
-        request.get('http://localhost:8000/campaigns')
+        request.get('campaigns')
             .then((response) => {
                 const list = response.filter((campaign) => {
                     return campaign.status === 'active';
@@ -40,7 +40,7 @@ class Header extends Component {
         }).then((result) => {
             if (result.value) {
                 const campaignID = event.currentTarget.dataset.campaignId;
-                request.delete(`http://localhost:8000/campaigns/${campaignID}`)
+                request.delete(`campaigns/${campaignID}`)
                     .then((response) => {
                         console.log(response);
                     })

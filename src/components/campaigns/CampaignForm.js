@@ -135,7 +135,7 @@ class CampaignForm extends Component {
         console.log("Submit!");
         if ( this.state.stickers.length >= 4 && this.state.stickers.length <= 8 ) {
             
-            request.post('http://localhost:8000/campaigns/', this.state, {})
+            request.post('campaigns/', this.state, {})
             .then((response) => {
                 console.log(response);
                 this.props.history.push('/campaigns');
