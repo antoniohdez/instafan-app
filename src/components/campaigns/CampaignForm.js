@@ -128,37 +128,29 @@ class CampaignForm extends Component {
     }
 
     onSubmit() {
-        const registerBtn = document.querySelector('#submit-btn');
-        registerBtn.disabled = true;
-        registerBtn.innerText = 'Cargando...'
+        if ( this.validateStep() ) {
+            const registerBtn = document.querySelector('#submit-btn');
+            registerBtn.disabled = true;
+            registerBtn.innerText = 'Cargando...'
 
-        console.log("Submit!");
-        if ( this.state.stickers.length >= 4 && this.state.stickers.length <= 8 ) {
-            
-            request.post('campaigns/', this.state, {})
-            .then((response) => {
-                console.log(response);
-                this.props.history.push('/campaigns');
-            })
-            .catch((error) => {
-                // Show error in login...
-                console.log(error);
-                registerBtn.disabled = false;
-                registerBtn.innerText = 'Error!';
                 
-                swal({
-                    text: 'Ha ocurrido un error, por favor intentar de nuevo.',
-                    type: 'error'
+            request.post('campaigns/', this.state, {})
+                .then((response) => {
+                    console.log(response);
+                    this.props.history.push('/campaigns');
+                })
+                .catch((error) => {
+                    // Show error in login...
+                    console.log(error);
+                    registerBtn.disabled = false;
+                    registerBtn.innerText = 'Error!';
+                    
+                    swal({
+                        text: 'Ha ocurrido un error, por favor intentar de nuevo.',
+                        type: 'error'
+                    });
+
                 });
-
-            });
-
-
-        } else {
-            swal({
-                text: 'Selecciona al menos 4 stickers.',
-                type: 'warning'
-            });
         }
     }
 
@@ -166,23 +158,47 @@ class CampaignForm extends Component {
         this.props.history.goBack();
     }
 
-    nextStep() {
+    validateStep() {
         if ( this.state.step === 1 ) {
-            if ( !(this.state.target && this.state.name && this.state.hashtag) ) {
+            let missingFields = [];
+
+            if ( !this.state.target ) {
+                missingFields.push('- Target');
+            }
+            if ( !this.state.name ) {
+                missingFields.push('- Nombre de Campaña');
+            } 
+            if ( !this.state.hashtag ) {
+                missingFields.push('- Hashtag');
+            }
+
+            if ( missingFields.length > 0 ) {
+                let text = 'Completa los campo requeridos:<br>' + missingFields.join('<br>');
                 swal({
-                    text: 'Completa los campo requeridos',
+                    html: text,
                     type: 'warning'
                 });
-                
-                return;
+                return false;
             }
-        }/* else if ( this.state.step === 2 ) {
-            if ( !(this.state.stickers.length >= 4 && this.state.stickers.length <= 8) ) {
-                return;
+        } else if ( this.state.step === 2 ) {
+            const length = this.state.stickers.length;
+
+            if ( length < 4 && length > 8 ) {
+                swal({
+                    html: 'Selecciona al menos 4 stickers.',
+                    type: 'warning'
+                });
+                return false;
             }
-        }*/
-        
-        this.setState({ step: this.state.step + 1 });        
+        }
+
+        return true;
+    }
+
+    nextStep() {
+        if ( this.validateStep() ) {
+            this.setState({ step: this.state.step + 1 });
+        }
     }
 
     backStep() {

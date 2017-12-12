@@ -13,7 +13,9 @@ class Header extends Component {
                 <nav className="header__right-menu">
                     <ul className="header-menu">
                         <li className="header-menu__item header-menu__item--thumbnail">
-                            <img src="https://pbs.twimg.com/profile_images/721920865189781504/AlUaeaVh_normal.jpg" alt="profile thumbnail" />
+                            {/*
+                                <img src="https://pbs.twimg.com/profile_images/721920865189781504/AlUaeaVh_normal.jpg" alt="profile thumbnail" />
+                            */}
                             <span> Antonio</span>
                             <i className="fa fa-fw fa-caret-down"></i>
                             <ul className="sub-menu sub-menu--left-of-parent">
