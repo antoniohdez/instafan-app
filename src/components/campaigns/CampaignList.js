@@ -10,7 +10,7 @@ class Header extends Component {
             campaigns: []
         };
 
-        request.get('campaigns')
+        request.get('campaigns/')
             .then((response) => {
                 const list = response.filter((campaign) => {
                     return campaign.status === 'active';

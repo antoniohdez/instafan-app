@@ -21,6 +21,7 @@ exports.verifySession = function() {
             })
             .catch((error) => {
                 localStorage.removeItem('accessToken');
+                localStorage.removeItem('userID');
                 reject(error);
             });
     });
@@ -35,6 +36,7 @@ exports.signIn = function(email, password) {
 
     req.then((result) => {
         localStorage.setItem('accessToken', result.accessToken);
+        localStorage.setItem('userID', result.userID);
     });
 
     return req;

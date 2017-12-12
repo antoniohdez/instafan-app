@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import request from '../../js/util/request';
 
 class Header extends Component {
+        constructor(props) {
+        super(props);
+        this.state = { 
+            name: []
+        };
+        const userID = localStorage.getItem('userID');
+        request.get(`users/${userID}`)
+            .then((response) => {
+                console.log(response);
+                const name = response.firstname || response.businessName;
+
+                this.setState({ name: name });
+            }).catch((error) => {
+                console.log(error);
+            });
+
+    }
+
     render() {
         return (
             <section className="header">
@@ -16,7 +35,7 @@ class Header extends Component {
                             {/*
                                 <img src="https://pbs.twimg.com/profile_images/721920865189781504/AlUaeaVh_normal.jpg" alt="profile thumbnail" />
                             */}
-                            <span> Antonio</span>
+                            <span> {this.state.name}</span>
                             <i className="fa fa-fw fa-caret-down"></i>
                             <ul className="sub-menu sub-menu--left-of-parent">
                                 <li className="sub-menu__item">

@@ -1,5 +1,5 @@
 const exports = {};
-const baseUrl = 'http://antoniohdez.me:8080/';
+const baseUrl = 'http://localhost:8080/';
 
 exports.get = function(url) {
     return exports.fetch(url);
