@@ -1,20 +1,28 @@
 const exports = {};
 const baseUrl = 'http://localhost:8080/';
 
-exports.get = function(url) {
-    return exports.fetch(url);
+exports.get = function(url, options = {}) {
+    const defaultOptions = {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+    
+    options = { ...defaultOptions, ...options }
+    return exports.fetch(url, options);
 }
 
 exports.post = function(url, body, options = {}) {
-	const defaultOptions = {
+    const defaultOptions = {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(body),
     };
-	
-	options = { ...defaultOptions, ...options }
+    
+    options = { ...defaultOptions, ...options }
     return exports.fetch(url, options);
 }
 
@@ -24,20 +32,20 @@ exports.delete = function(url) {
 
 // Wrapper to handle error status codes in the catch method.
 exports.fetch = function(url, options = {}) {
-	const path = baseUrl + url;
-	const p = new Promise((resolve, reject) => {
-		fetch(path, options)
-			.then((response) => {
-				if (response.ok) {
-					resolve(response.json());
-				} else {
-					reject(response.json());
-				}
-			}).catch((error) => {
-				reject(error);
-			});
-	});
-	return p;
+    const path = baseUrl + url;
+    const p = new Promise((resolve, reject) => {
+        fetch(path, options)
+            .then((response) => {
+                if (response.ok) {
+                    resolve(response.json());
+                } else {
+                    reject(response.json());
+                }
+            }).catch((error) => {
+                reject(error);
+            });
+    });
+    return p;
 }
 
 //const getJson = (response) => response.json();

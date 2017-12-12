@@ -10,7 +10,14 @@ class Header extends Component {
             campaigns: []
         };
 
-        request.get('campaigns/')
+        this.refreshList = this.refreshList.bind(this);
+        this.deleteCampaign = this.deleteCampaign.bind(this);
+
+        this.refreshList();
+    }
+
+    refreshList() {
+        request.get('campaigns/?userID=' + localStorage.getItem('userID'))
             .then((response) => {
                 const list = response.filter((campaign) => {
                     return campaign.status === 'active';
@@ -19,11 +26,11 @@ class Header extends Component {
             }).catch((error) => {
                 console.log(error);
             });
-
-        this.deleteCampaign = this.deleteCampaign.bind(this);
     }
 
     deleteCampaign(event) {
+        const target = event.currentTarget;
+
         swal({
             title: '¿Eliminar campaña?',
             text: 'Esta acción no puede ser revertida.',
@@ -39,10 +46,11 @@ class Header extends Component {
             reverseButtons: true
         }).then((result) => {
             if (result.value) {
-                const campaignID = event.currentTarget.dataset.campaignId;
+                const campaignID = target.dataset.campaignId;
                 request.delete(`campaigns/${campaignID}`)
                     .then((response) => {
                         console.log(response);
+                        this.refreshList();
                     })
                     .catch((error) => {
                         console.log(error);

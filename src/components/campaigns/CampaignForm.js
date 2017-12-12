@@ -11,7 +11,8 @@ class CampaignForm extends Component {
             name: '', // Controlled input
             hashtag: '', // Controlled input
             stickers: [],
-            watermark: ''
+            watermark: '',
+            userID: localStorage.getItem('userID')
         };
 
         this.onTargetChange = this.onTargetChange.bind(this);

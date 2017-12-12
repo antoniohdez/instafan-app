@@ -11,7 +11,6 @@ class Header extends Component {
         const userID = localStorage.getItem('userID');
         request.get(`users/${userID}`)
             .then((response) => {
-                console.log(response);
                 const name = response.firstname || response.businessName;
 
                 this.setState({ name: name });
