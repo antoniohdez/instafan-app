@@ -87,21 +87,20 @@ class CampaignForm extends Component {
         event.persist();
         const self = this;
         const target = event.target;
-        const image = ( target.files && target.files[0] ) ? target.files[0] : undefined ;
-
-        // Check validation for stickers
-        if (image) {
+        if (target.files) {
+            const files = Array.from(target.files);
+            files.forEach((img) => {
+                var reader = new FileReader();
             
-            var reader = new FileReader();
-            
-            reader.onload = (e) => {
-                const stickers = self.state.stickers;
-                stickers.push(e.target.result);
-                
-                self.setState({ stickers: stickers });
-            };
+                reader.onload = (e) => {
+                    const stickers = self.state.stickers;
+                    stickers.push(e.target.result);
+                    
+                    self.setState({ stickers: stickers });
+                };
 
-            reader.readAsDataURL( image );
+                reader.readAsDataURL( img );
+            });
         }
     }
 
@@ -190,7 +189,7 @@ class CampaignForm extends Component {
         } else if ( this.state.step === 2 ) {
             const length = this.state.stickers.length;
 
-            if ( length < 4 && length > 8 ) {
+            if ( length < 4 || length > 8 ) {
                 swal({
                     html: 'Selecciona al menos 4 stickers.',
                     type: 'warning'
@@ -325,7 +324,7 @@ class CampaignForm extends Component {
                                             { (this.state.stickers.length === 0) ? <i className="fa fa-asterisk"></i> : null }
                                         </div>
                                         <div className="form__drag-n-drop-input">
-                                            <input id="target" type="file" onChange={this.onStickerPush} />
+                                            <input id="target" type="file" onChange={this.onStickerPush} multiple />
                                             <label htmlFor="target">Selecciona un archivo</label>
                                         </div>
                                     </div>
