@@ -16,6 +16,7 @@ class CampaignForm extends Component {
         };
 
         this.onTargetChange = this.onTargetChange.bind(this);
+        this.onTargetRemove = this.onTargetRemove.bind(this);
         this.onStickerPush = this.onStickerPush.bind(this);
         this.onStickerRemove = this.onStickerRemove.bind(this);
         this.onWatermarkChange = this.onWatermarkChange.bind(this);
@@ -75,6 +76,11 @@ class CampaignForm extends Component {
             target.value = "";
             this.setState({ target: undefined });
         }
+    }
+
+    onTargetRemove(event) {
+        const target = document.querySelector('#target');
+        this.setState({ target: undefined });
     }
 
     onStickerPush(event) {
@@ -262,6 +268,7 @@ class CampaignForm extends Component {
                                         Target 
                                         <i className="fa fa-asterisk"></i>
                                     </div>
+                                    <span onClick={this.onTargetRemove} className="fa fa-times form__image-preview-remove"></span>
                                     <img src={this.state.target} className="form__image-preview" alt="target" />
                                 </div>
                         }

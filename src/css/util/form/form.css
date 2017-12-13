@@ -94,6 +94,15 @@
     max-width: 100%;
 }
 
+.form__image-preview-remove {
+    position: absolute;
+    color: white;
+    text-shadow: 0px 0px .5em black;
+    margin-top: 3px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 .form__icon-input {
     display: flex;
     align-items: center;
