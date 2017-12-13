@@ -37,12 +37,12 @@ class Header extends Component {
                             <span> {this.state.name}</span>
                             <i className="fa fa-fw fa-caret-down"></i>
                             <ul className="sub-menu sub-menu--left-of-parent">
-                                <li className="sub-menu__item">
+                                {/*<li className="sub-menu__item">
                                     <Link to="/profile" className="sub-menu__item-link">
                                         <i className="fa fa-user"></i>
                                         <span>&nbsp;Perfil</span>
                                     </Link>
-                                </li>
+                                </li>*/}
                                 <li className="sub-menu__item">
                                     <Link to="/help" className="sub-menu__item-link">
                                         <i className="fa fa-question-circle"></i>
