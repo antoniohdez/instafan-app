@@ -176,7 +176,12 @@ class CampaignForm extends Component {
             } 
             if ( !this.state.hashtag ) {
                 missingFields.push('- Hashtag');
+            } else {
+                if ( !/^\w*[a-zA-Z]+\w*$/.test(this.state.hashtag) ) {
+                    missingFields.push('El hashtag es inválido.');
+                }
             }
+            
 
             if ( missingFields.length > 0 ) {
                 let text = 'Completa los campo requeridos:<br>' + missingFields.join('<br>');
