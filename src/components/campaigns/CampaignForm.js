@@ -94,7 +94,7 @@ class CampaignForm extends Component {
             
                 reader.onload = (e) => {
                     const stickers = self.state.stickers;
-                    stickers.push(e.target.result);
+                    stickers.push({ sticker: e.target.result });
                     
                     self.setState({ stickers: stickers });
                 };
@@ -313,7 +313,7 @@ class CampaignForm extends Component {
                                                 { (i === 0) ? <i className="fa fa-asterisk"></i> : null }
                                             </div>
                                             <div className="form__drag-n-drop-input">
-                                                <img src={sticker} alt="sticker" />
+                                                <img src={sticker.sticker} alt="sticker" />
                                             </div>
                                         </div>
                                     </div>
