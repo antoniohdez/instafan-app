@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Scans from './widgets/Scans';
+import Shares from './widgets/Shares';
+import Stickers from './widgets/Stickers';
+import Photos from './widgets/Photos';
 
 class Header extends Component {
 
@@ -11,58 +15,10 @@ class Header extends Component {
                     </div>
                     <div className="analytics__section-content">
                         <div className="analytics__widgets">
-                            <div className="widget widget--green">
-                                <div className="widget__text-container">
-                                    <div className="widget__data">
-                                        137
-                                    </div>
-                                    <div className="widget__title">
-                                        Vistas de campaña
-                                    </div>
-                                </div>
-                                <div className="widget__icon-container">
-                                    <i className="fa fa-mobile fa-fw fa-4x"></i>
-                                </div>
-                            </div>
-                            <div className="widget widget--blue">
-                                <div className="widget__text-container">
-                                    <div className="widget__data">
-                                        52
-                                    </div>
-                                    <div className="widget__title">
-                                        Compartidos en Redes
-                                    </div>
-                                </div>
-                                <div className="widget__icon-container">
-                                    <i className="fa fa-share-square fa-fw fa-3x"></i>
-                                </div>
-                            </div>
-                            <div className="widget widget--yellow">
-                                <div className="widget__text-container">
-                                    <div className="widget__data">
-                                        35
-                                    </div>
-                                    <div className="widget__title">
-                                        Uso de stickers
-                                    </div>
-                                </div>
-                                <div className="widget__icon-container">
-                                    <i className="fa fa-smile-o fa-fw fa-3x"></i>
-                                </div>
-                            </div>
-                            <div className="widget widget--red">
-                                <div className="widget__text-container">
-                                    <div className="widget__data">
-                                        194
-                                    </div>
-                                    <div className="widget__title">
-                                        Fotos creadas
-                                    </div>
-                                </div>
-                                <div className="widget__icon-container">
-                                    <i className="fa fa-camera fa-fw fa-3x"></i>
-                                </div>
-                            </div>
+                            <Scans />
+                            <Shares />
+                            <Stickers />
+                            <Photos />
                         </div>
                     </div>
                 </div>

@@ -20,12 +20,12 @@ class SideBar extends Component {
                                 <span className="side-menu__item-label"> Campañas</span>
                             </NavLink>
                         </li>
-                        {/*li className="side-menu__item">
+                        <li className="side-menu__item">
                             <NavLink exact to="/analytics" activeClassName="side-menu__item--active">
                                 <i className="fa fa-fw fa-line-chart"></i>
                                 <span className="side-menu__item-label"> Estadísticas</span>
                             </NavLink>
-                        </li*/}
+                        </li>
                     </ul>
                     <div className="side-bar__call-to-action">
                     	<Link to="/campaigns/create" className="button button--primary">
