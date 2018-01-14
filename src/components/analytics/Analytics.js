@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import request from '../../js/util/request';
 import Widget from './Widget';
-import Scans from './widgets/Scans';
-import Shares from './widgets/Shares';
-import Stickers from './widgets/Stickers';
-import Photos from './widgets/Photos';
 
 class Analytcis extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            summary: {}
+            summary: {},
+            campaigns: []
         };
     }
 
@@ -18,6 +15,20 @@ class Analytcis extends Component {
         request.get('analytics/summary?userID=' + localStorage.getItem('userID'))
             .then((response) => {
                 this.setState({ summary: response });
+            }).catch(console.log);
+
+        request.get('campaigns/?target=false&userID=' + localStorage.getItem('userID'))
+            .then((response) => {
+                response.forEach((campaign) => {
+                    request.get('analytics/target/' + campaign._id)
+                        .then((data) => {
+                            campaign.analytics = data;
+                            this.setState({ campaigns: this.state.campaigns.push(campaign) });
+                            console.log(campaign);
+                        })
+                        .catch(console.log);
+                });
+                
             }).catch(console.log);
     }
 
@@ -61,7 +72,7 @@ class Analytcis extends Component {
                     <div className="analytics__section-content">
                         <div className="panel panel--full-width analytics-panel">
                             <div className="panel__header analytics-panel__header">
-                                <span className="analytics-panel__title">Campaña Kia Rio 2018</span>
+                                <span className="analytics-panel__title">Kia Rio 2018</span>
                                 <span className="analytics-panel__status">
                                     <span className="fa fa-fw fa-check-circle campaign-status__icon campaign-status__icon--ok"></span>
                                     <span className="campaign-status__text">Activo</span>
