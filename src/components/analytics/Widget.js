@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Scans extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentWillReceiveProps(nextProps) {
         this.setState({ data: nextProps });
     }
