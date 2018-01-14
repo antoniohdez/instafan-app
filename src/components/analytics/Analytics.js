@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import request from '../../js/util/request';
+import Widget from './Widget';
 import Scans from './widgets/Scans';
 import Shares from './widgets/Shares';
 import Stickers from './widgets/Stickers';
 import Photos from './widgets/Photos';
 
-class Header extends Component {
+class Analytcis extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            summary: {}
+        };
+    }
+
+    componentDidMount() {
+        request.get('analytics/summary?userID=' + localStorage.getItem('userID'))
+            .then((response) => {
+                this.setState({ summary: response });
+            }).catch(console.log);
+    }
 
     render() {
         return (
@@ -15,10 +30,27 @@ class Header extends Component {
                     </div>
                     <div className="analytics__section-content">
                         <div className="analytics__widgets">
-                            <Scans />
-                            <Shares />
-                            <Stickers />
-                            <Photos />
+                            <Widget data={this.state.summary.scans} attr={{
+                                modifier: '--green',
+                                text: 'Vistas de campaña',
+                                icon: 'fa-mobile',
+                                iconSize: 'fa-4x'
+                            }} />
+                            <Widget data={this.state.summary.shares} attr={{
+                                modifier: '--blue',
+                                text: 'Compartido en redes',
+                                icon: 'fa-share-square'
+                            }} />
+                            <Widget data={this.state.summary.stickers} attr={{
+                                modifier: '--yellow',
+                                text: 'Uso de stickers',
+                                icon: 'fa-smile-o'
+                            }} />
+                            <Widget data={this.state.summary.photos} attr={{
+                                modifier: '--red',
+                                text: 'Fotos creadas',
+                                icon: 'fa-camera'
+                            }} />
                         </div>
                     </div>
                 </div>
@@ -216,4 +248,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default Analytcis;

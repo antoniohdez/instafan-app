@@ -12,7 +12,9 @@ class Header extends Component {
 
         this.refreshList = this.refreshList.bind(this);
         this.deleteCampaign = this.deleteCampaign.bind(this);
+    }
 
+    componentDidMount() {
         this.refreshList();
     }
 
