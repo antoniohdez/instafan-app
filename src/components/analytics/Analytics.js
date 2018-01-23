@@ -25,11 +25,21 @@ class Analytcis extends Component {
                     request.get('analytics/target/' + campaign._id)
                         .then((data) => {
                             campaign.analytics = data;
-                            
-                            campaign.analytics.stickers.forEach((sticker) => {
-                                sticker.sticker = campaign.stickers.find((imageObject) => {
-                                    return imageObject._id === sticker._id;
-                                }).sticker;
+
+                            // Get the count key from the analytics array of stickers
+                            campaign.stickers.forEach((sticker) => {
+                                const stickerStat = campaign.analytics.stickers.find((stickerStat) => {
+                                    return stickerStat._id === sticker._id;
+                                });
+
+                                // If the are no stats then set counter to 0
+                                sticker.count = stickerStat ? stickerStat.count : 0;
+                            });
+
+                            // Asign array of sticker to analytics list
+                            campaign.analytics.stickers = campaign.stickers;
+                            campaign.analytics.stickers.sort((sticker1, sticker2) => {
+                                return sticker1.count < sticker2.count ? 1 : -1; // Desc order
                             });
 
                             const items = this.state.campaigns;
