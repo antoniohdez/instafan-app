@@ -14,7 +14,14 @@ class DataList extends Component {
                         this.props.list.map((item, i) => {
                             return <div className="analytics-panel__row-stat" key={`item_${i}`}>
                                 <div className="analytics-panel__cell">
-                                    <img src={item.sticker} alt="sticker" />
+                                    {
+                                        function(item){
+                                            if (item.sticker) {
+                                                return <img src={item.sticker} alt="sticker" />
+                                            } else {
+                                                return item._id }
+                                        }(item)
+                                    }
                                 </div>
                                 <div className="analytics-panel__cell">
                                     {item.count}

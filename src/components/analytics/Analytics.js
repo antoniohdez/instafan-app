@@ -110,52 +110,7 @@ class Analytcis extends Component {
                                             </div>
                                             <div className="analytics-panel__columns-grid">
                                                 <DataList list={campaign.analytics.stickers} label={'Uso de stickers'} />
-
-                                                <div className="analytics-panel__column-container">
-                                                    <div className="analytics-panel__sub-title">Top 5 ciudades</div>
-                                                    <div className="analytics-panel__table">
-                                                        <div className="analytics-panel__row-stat">
-                                                            <div className="analytics-panel__cell">
-                                                                Guadalajara
-                                                            </div>
-                                                            <div className="analytics-panel__cell">
-                                                                57
-                                                            </div>
-                                                        </div>
-                                                        <div className="analytics-panel__row-stat">
-                                                            <div className="analytics-panel__cell">
-                                                                CDMX
-                                                            </div>
-                                                            <div className="analytics-panel__cell">
-                                                                41
-                                                            </div>
-                                                        </div>
-                                                        <div className="analytics-panel__row-stat">
-                                                            <div className="analytics-panel__cell">
-                                                                Monterrey
-                                                            </div>
-                                                            <div className="analytics-panel__cell">
-                                                                38
-                                                            </div>
-                                                        </div>
-                                                        <div className="analytics-panel__row-stat">
-                                                            <div className="analytics-panel__cell">
-                                                                Zapopan
-                                                            </div>
-                                                            <div className="analytics-panel__cell">
-                                                                25
-                                                            </div>
-                                                        </div>
-                                                        <div className="analytics-panel__row-stat">
-                                                            <div className="analytics-panel__cell">
-                                                                Tepic
-                                                            </div>
-                                                            <div className="analytics-panel__cell">
-                                                                21
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <DataList list={campaign.analytics.locations} label={'Top ciudades'} />
                                             </div>
                                         </div>
                                     </div>
