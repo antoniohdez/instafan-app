@@ -27,7 +27,7 @@ class DataList extends Component {
                                     {item.count}
                                 </div>
                             </div>
-                        })
+                        }).filter((item, i) => i < 5)
                     }
                 </div>
             </div>
